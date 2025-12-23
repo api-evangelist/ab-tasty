@@ -33,7 +33,7 @@ paths:
     post:
       tags:
         - Campaigns
-      summary: Post  Environmentid Campaigns
+      summary: Post Environment Campaigns
       description: >
         Retrieves all the campaigns that correspond to the specified user and
         context attributes.
@@ -109,7 +109,7 @@ paths:
     post:
       tags:
         - Campaigns
-      summary: Post  Environmentid Campaigns Campaignid
+      summary: Post Environment Campaigns Campaignid
       description: >
         Retrieves the assignment of your visitor ID with a specific context to
         the specified campaign ID.
@@ -156,7 +156,7 @@ paths:
     post:
       tags:
         - Flags
-      summary: Post  Environmentid Flags
+      summary: Post Environment Flags
       description: >
         Returns the list of flags with values, campaign, and variation
         associated.
