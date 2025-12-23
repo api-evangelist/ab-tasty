@@ -109,7 +109,7 @@ paths:
     post:
       tags:
         - Campaigns
-      summary: Post Environment Campaigns Campaignid
+      summary: Post Environment Campaigns
       description: >
         Retrieves the assignment of your visitor ID with a specific context to
         the specified campaign ID.
