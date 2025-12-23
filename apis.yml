@@ -2,26 +2,15 @@ aid: ab-tasty
 url: >-
   https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/apis.yml
 apis:
-  - aid: ab-tasty:ab-tasty
-    name: 'AB Tasty Ab Tasty '
-    tags:
-      - Unified
-      - Contract
-      - Experimentation
-    humanURL: ' https://www.abtasty.com/'
-    properties:
-      - url: ' https://www.abtasty.com/'
-        type: Documentation
-    description: The experience optimization partner that sees progress in all places.
-  - aid: undefined:decision
-    name: 'AB Tasty Decision '
+  - aid: ab-tasty:decision-api
+    name: AB Tasty Decision API
     humanURL: https://docs.abtasty.com/server-side/decision-api/decision-api
     description: >-
       The Decision API is a RESTful API that serves as the engine behind
       Flagship. It is published on Amazon API Gateway and distributed in eight
       regions with collocated AWS Lambda and DynamoDB Global Tables to deliver
       exceptional performance across the globe.
-  - aid: undefined:remote-control-api
+  - aid: ab-tasty:remote-control-api
     name: 'AB Tasty Remote Control API '
     humanURL: https://docs.abtasty.com/server-side/remote-control-api
     description: https://docs.abtasty.com/server-side/remote-control-api
