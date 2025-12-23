@@ -1,27 +1,38 @@
 aid: ab-tasty
-name: AB Tasty
-description: 'The experience optimization partner that sees progress in all places '
-type: Index
-position: Consumer
-access: 3rd-Party
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-tags:
-  - API
-created: '2025-06-05'
-modified: '2025-06-05'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/apis.yml
-specificationVersion: '0.19'
 apis:
   - aid: ab-tasty:ab-tasty
     name: AB Tasty
-    description: 'The experience optimization partner that sees progress in all places '
-    humanURL: ' https://www.abtasty.com/'
     tags:
-      - API
+      - Unified
+    humanURL: ' https://www.abtasty.com/'
     properties:
-      - type: Documentation
-        url: ' https://www.abtasty.com/'
+      - url: ' https://www.abtasty.com/'
+        type: Documentation
+    description: The experience optimization partner that sees progress in all places.
+name: AB Tasty
+tags:
+  - Unified
+  - Aggregation
+  - Experimentation
+type: Contract
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+access: 3rd-Party
+created: '2025-06-05'
+modified: '2025-12-23'
+position: Consuming
+description: >-
+  At AB Tasty, we’re your partner for pushing great ideas even further through
+  optimization. We achieve this by empowering brands to build better experiences
+  using personalization, experimentation, recommendations, merchandising, and
+  the market’s only emotions-based segmentation solution.
+
+  Our all-in-one platform offers web and API solutions for a unified approach to
+  creating seamless experiences. We are a trusted partner in optimization and
+  innovation to over 1,100 brands including Kering, McDonald’s, Ulta Beauty,
+  L’Oreal, Disneyland Paris, LVMH, and many others.
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
+specificationVersion: '0.19'
