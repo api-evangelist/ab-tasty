@@ -32,3 +32,16 @@ maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
 specificationVersion: '0.19'
+common:
+  - name: Website
+    description: 'null'
+    url: https://www.abtasty.com/
+    type: Website
+  - name: Pricing - abtasty
+    description: 'null'
+    url: https://www.abtasty.com/pricing/
+    type: Pricing
+  - name: Case Studies
+    description: 'null'
+    url: https://www.abtasty.com/resource-categories/case-studies/
+    type: CaseStudies
