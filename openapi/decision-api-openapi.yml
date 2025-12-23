@@ -12,7 +12,7 @@ info:
     backends, mobile apps, or edge workers while keeping user exposure
     consistent. You pass identifiers and attributes at request time, use the
     response to render the experience, and pair it with event tracking for
-    measurement....
+    measurement...
   contact:
     name: Flagship Support
     url: https://www.flagship.io
