@@ -33,14 +33,14 @@ paths:
     post:
       tags:
         - Campaigns
-      summary: Run all campaign assignments
+      summary: Post  Environmentid Campaigns
       description: >
         Retrieves all the campaigns that correspond to the specified user and
         context attributes.
 
         By default, the API will send a CAMPAIGN hit to Flagship for each
         campaign in the response.
-      operationId: getAllCampaigns
+      operationId: postEnvironmentidCampaigns
       parameters:
         - $ref: '#/components/parameters/EnvironmentId'
         - $ref: '#/components/parameters/Mode'
@@ -109,13 +109,13 @@ paths:
     post:
       tags:
         - Campaigns
-      summary: Run a single campaign assignment
+      summary: Post  Environmentid Campaigns Campaignid
       description: >
         Retrieves the assignment of your visitor ID with a specific context to
         the specified campaign ID.
 
         By default, the API will send a CAMPAIGN hit to Flagship.
-      operationId: getSingleCampaign
+      operationId: postEnvironmentidCampaignsCampaignid
       parameters:
         - $ref: '#/components/parameters/EnvironmentId'
         - $ref: '#/components/parameters/CampaignId'
@@ -156,14 +156,14 @@ paths:
     post:
       tags:
         - Flags
-      summary: Get feature flags
+      summary: Post  Environmentid Flags
       description: >
         Returns the list of flags with values, campaign, and variation
         associated.
 
         Has the same behavior as /campaigns endpoint but with a different
         response format.
-      operationId: getFlags
+      operationId: postEnvironmentidFlags
       parameters:
         - $ref: '#/components/parameters/EnvironmentId'
         - name: exposeAllKeys
@@ -221,14 +221,14 @@ paths:
     post:
       tags:
         - Activation
-      summary: Campaign activation
+      summary: Post  Activate
       description: >
         Assigns a user to a variation. Should be used to manually activate a
         single campaign and variation
 
         in cases where you choose not to activate them automatically (when
         trigger_hit is false).
-      operationId: activateCampaign
+      operationId: postActivate
       requestBody:
         required: true
         content:
