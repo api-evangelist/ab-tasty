@@ -58,7 +58,7 @@ common:
     type: CaseStudies
     description: 'null'
 created: '2025-06-05'
-modified: '2025-12-23'
+modified: '2026-03-16'
 position: Consuming
 description: >-
   At AB Tasty, were your partner for pushing great ideas even further through
@@ -67,5 +67,5 @@ description: >-
   the markets only emotions-based segmentation solution..
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
 specificationVersion: '0.19'
