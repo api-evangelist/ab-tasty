@@ -57,8 +57,14 @@ common:
     name: Case Studies
     type: CaseStudies
     description: 'null'
+  - url: https://developers.abtasty.com/
+    type: Portal
+  - url: https://docs.abtasty.com/integrations/custom-integrations/ab-tasty-public-api
+    type: Documentation
+  - url: https://support.abtasty.com/hc/en-us
+    type: Support
 created: '2025-06-05'
-modified: '2026-03-16'
+modified: '2026-04-01'
 position: Consuming
 description: >-
   At AB Tasty, were your partner for pushing great ideas even further through
