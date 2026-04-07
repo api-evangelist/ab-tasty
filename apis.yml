@@ -28,9 +28,9 @@ apis:
       events, refresh decisions, and clear caches to reproduce clean states.
 name: AB Tasty
 tags:
-  - Unified
   - Aggregation
   - Experimentation
+  - Unified
 type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
@@ -49,8 +49,7 @@ common:
     description: 'null'
   - url: https://developers.abtasty.com/
     type: Portal
-  - url: 
-      https://docs.abtasty.com/integrations/custom-integrations/ab-tasty-public-api
+  - url: https://docs.abtasty.com/integrations/custom-integrations/ab-tasty-public-api
     type: Documentation
   - url: https://support.abtasty.com/hc/en-us
     type: Support
