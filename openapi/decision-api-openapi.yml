@@ -35,7 +35,7 @@ paths:
         - Post
         - Environments
         - Campaigns
-      summary: Post Environment Campaigns
+      summary: AB Tasty Post Environment Campaigns
       description: >
         Retrieves all the campaigns that correspond to the specified user and
         context attributes.
@@ -113,7 +113,7 @@ paths:
         - Post
         - Environments
         - Campaigns
-      summary: Post Environment Campaigns
+      summary: AB Tasty Post Environment Campaigns
       description: >
         Retrieves the assignment of your visitor ID with a specific context to
         the specified campaign ID.
@@ -162,7 +162,7 @@ paths:
         - Post
         - Environments
         - Flags
-      summary: Post Environment Flags
+      summary: AB Tasty Post Environment Flags
       description: >
         Returns the list of flags with values, campaign, and variation
         associated.
@@ -200,7 +200,7 @@ paths:
                   metadata:
                     campaignId: campaign_abc
                     campaignName: New Checkout Experiment
-                    slug: null
+                    slug:
                     type: ab
                     variationGroupId: vg_123
                     variationGroupName: Variation Group A
@@ -228,7 +228,7 @@ paths:
       tags:
         - Post
         - Activate
-      summary: Post  Activate
+      summary: AB Tasty Post  Activate
       description: >
         Assigns a user to a variation. Should be used to manually activate a
         single campaign and variation
