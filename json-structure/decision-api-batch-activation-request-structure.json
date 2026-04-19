@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-structure/decision-api-batch-activation-request-structure.json",
+  "name": "BatchActivationRequest",
+  "description": "BatchActivationRequest schema from AB Tasty Decision API",
+  "type": "object",
+  "properties": {
+    "cid": {
+      "type": "string",
+      "description": "Environment ID",
+      "example": "env_abc"
+    },
+    "batch": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BatchActivationItem"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "cid",
+    "batch"
+  ]
+}

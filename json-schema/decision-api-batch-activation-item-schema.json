@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-batch-activation-item-schema.json",
+  "title": "BatchActivationItem",
+  "description": "BatchActivationItem schema from AB Tasty Decision API",
+  "type": "object",
+  "properties": {
+    "vid": {
+      "type": "string",
+      "description": "Visitor ID",
+      "example": "user123"
+    },
+    "caid": {
+      "type": "string",
+      "description": "Variation group ID",
+      "example": "vg_123"
+    },
+    "vaid": {
+      "type": "string",
+      "description": "Variation ID",
+      "example": "var_456"
+    },
+    "qt": {
+      "type": "integer",
+      "description": "Time delta in milliseconds for offline/latent hits (0-4 hours)",
+      "minimum": 0,
+      "example": 2134
+    }
+  },
+  "required": [
+    "vid",
+    "caid",
+    "vaid"
+  ]
+}

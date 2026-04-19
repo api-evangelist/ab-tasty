@@ -1,0 +1,11 @@
+{
+  "campaignId": "campaign_abc",
+  "campaignName": "New Checkout Experiment",
+  "slug": "checkout-exp",
+  "type": "ab",
+  "variationGroupId": "vg_123",
+  "variationGroupName": "Variation Group A",
+  "variationId": "var_456",
+  "variationName": "Treatment",
+  "reference": false
+}

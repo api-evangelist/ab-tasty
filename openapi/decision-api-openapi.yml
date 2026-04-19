@@ -17,25 +17,25 @@ info:
     name: Flagship Support
     url: https://www.flagship.io
 servers:
-  - url: https://decision.flagship.io/v2
-    description: Production server
+- url: https://decision.flagship.io/v2
+  description: Production server
 security:
-  - ApiKeyAuth: []
+- ApiKeyAuth: []
 tags:
-  - name: Activate
-  - name: Campaigns
-    description: Campaign assignment operations
-  - name: Environments
-  - name: Flags
-    description: Feature flag operations
-  - name: Post
+- name: Activate
+- name: Campaigns
+  description: Campaign assignment operations
+- name: Environments
+- name: Flags
+  description: Feature flag operations
+- name: Post
 paths:
   /{environmentId}/campaigns:
     post:
       tags:
-        - Campaigns
-        - Environments
-        - Post
+      - Campaigns
+      - Environments
+      - Post
       summary: AB Tasty Post Environment Campaigns
       description: >
         Retrieves all the campaigns that correspond to the specified user and
@@ -45,8 +45,8 @@ paths:
         campaign in the response.
       operationId: postEnvironmentidCampaigns
       parameters:
-        - $ref: '#/components/parameters/EnvironmentId'
-        - $ref: '#/components/parameters/Mode'
+      - $ref: '#/components/parameters/EnvironmentId'
+      - $ref: '#/components/parameters/Mode'
       requestBody:
         required: true
         content:
@@ -77,30 +77,30 @@ paths:
             application/json:
               schema:
                 oneOf:
-                  - $ref: '#/components/schemas/CampaignResponseNormal'
-                  - $ref: '#/components/schemas/CampaignResponseSimple'
-                  - $ref: '#/components/schemas/CampaignResponseFull'
+                - $ref: '#/components/schemas/CampaignResponseNormal'
+                - $ref: '#/components/schemas/CampaignResponseSimple'
+                - $ref: '#/components/schemas/CampaignResponseFull'
               examples:
                 normalMode:
                   summary: Normal mode response
                   value:
                     visitorId: user123
                     campaigns:
-                      - id: campaign_abc
-                        variationGroupId: vg_123
-                        variation:
-                          id: var_456
-                          modifications:
-                            type: JSON
-                            value:
-                              button_color: blue
-                              feature_enabled: true
+                    - id: campaign_abc
+                      variationGroupId: vg_123
+                      variation:
+                        id: var_456
+                        modifications:
+                          type: JSON
+                          value:
+                            button_color: blue
+                            feature_enabled: true
                 simpleMode:
                   summary: Simple mode response
                   value:
                     campaignsVariation:
-                      - campaignId: campaign_abc
-                        variationId: var_456
+                    - campaignId: campaign_abc
+                      variationId: var_456
                     mergedModifications:
                       button_color: blue
                       feature_enabled: true
@@ -108,12 +108,15 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         '429':
           $ref: '#/components/responses/RateLimitError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /{environmentId}/campaigns/{campaignId}:
     post:
       tags:
-        - Campaigns
-        - Environments
-        - Post
+      - Campaigns
+      - Environments
+      - Post
       summary: AB Tasty Post Environment Campaigns
       description: >
         Retrieves the assignment of your visitor ID with a specific context to
@@ -122,8 +125,8 @@ paths:
         By default, the API will send a CAMPAIGN hit to Flagship.
       operationId: postEnvironmentidCampaignsCampaignid
       parameters:
-        - $ref: '#/components/parameters/EnvironmentId'
-        - $ref: '#/components/parameters/CampaignId'
+      - $ref: '#/components/parameters/EnvironmentId'
+      - $ref: '#/components/parameters/CampaignId'
       requestBody:
         required: true
         content:
@@ -157,12 +160,15 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         '429':
           $ref: '#/components/responses/RateLimitError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /{environmentId}/flags:
     post:
       tags:
-        - Environments
-        - Flags
-        - Post
+      - Environments
+      - Flags
+      - Post
       summary: AB Tasty Post Environment Flags
       description: >
         Returns the list of flags with values, campaign, and variation
@@ -172,16 +178,16 @@ paths:
         response format.
       operationId: postEnvironmentidFlags
       parameters:
-        - $ref: '#/components/parameters/EnvironmentId'
-        - name: exposeAllKeys
-          in: query
-          description: >-
-            If true, all flag keys (even flag keys with null values) will be
-            returned
-          required: false
-          schema:
-            type: boolean
-            default: true
+      - $ref: '#/components/parameters/EnvironmentId'
+      - name: exposeAllKeys
+        in: query
+        description: >-
+          If true, all flag keys (even flag keys with null values) will be
+          returned
+        required: false
+        schema:
+          type: boolean
+          default: true
       requestBody:
         required: true
         content:
@@ -224,12 +230,15 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         '429':
           $ref: '#/components/responses/RateLimitError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /activate:
     post:
       tags:
-        - Activate
-        - Post
-      summary: AB Tasty Post  Activate
+      - Activate
+      - Post
+      summary: AB Tasty Post Activate
       description: >
         Assigns a user to a variation. Should be used to manually activate a
         single campaign and variation
@@ -243,8 +252,8 @@ paths:
           application/json:
             schema:
               oneOf:
-                - $ref: '#/components/schemas/ActivationRequest'
-                - $ref: '#/components/schemas/BatchActivationRequest'
+              - $ref: '#/components/schemas/ActivationRequest'
+              - $ref: '#/components/schemas/BatchActivationRequest'
             examples:
               single:
                 summary: Single activation
@@ -266,18 +275,21 @@ paths:
                 value:
                   cid: env_abc
                   batch:
-                    - vid: user123
-                      caid: vg_123
-                      vaid: var_456
-                    - vid: user456
-                      caid: vg_789
-                      vaid: var_012
-                      qt: 2134
+                  - vid: user123
+                    caid: vg_123
+                    vaid: var_456
+                  - vid: user456
+                    caid: vg_789
+                    vaid: var_012
+                    qt: 2134
       responses:
         '204':
           description: No Content - Activation successful
         '401':
           $ref: '#/components/responses/UnauthorizedError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     ApiKeyAuth:
@@ -312,15 +324,15 @@ components:
       schema:
         type: string
         enum:
-          - normal
-          - simple
-          - full
+        - normal
+        - simple
+        - full
         default: normal
   schemas:
     CampaignRequest:
       type: object
       required:
-        - visitor_id
+      - visitor_id
       properties:
         visitor_id:
           type: string
@@ -355,21 +367,21 @@ components:
           example: VIP_users
     SingleCampaignRequest:
       allOf:
-        - $ref: '#/components/schemas/CampaignRequest'
-        - type: object
-          properties:
-            format_response:
-              type: boolean
-              description: >-
-                If true, response will be formatted according to modification
-                type
-              default: false
-            default_redirect_url:
-              type: string
-              description: >-
-                Default URL for 302 redirect if no modification redirection is
-                defined
-              example: https://example.com/default
+      - $ref: '#/components/schemas/CampaignRequest'
+      - type: object
+        properties:
+          format_response:
+            type: boolean
+            description: >-
+              If true, response will be formatted according to modification
+              type
+            default: false
+          default_redirect_url:
+            type: string
+            description: >-
+              Default URL for 302 redirect if no modification redirection is
+              defined
+            example: https://example.com/default
     Campaign:
       type: object
       properties:
@@ -394,18 +406,18 @@ components:
                 type:
                   type: string
                   enum:
-                    - 'NULL'
-                    - JSON
-                    - TEXT
-                    - IMAGE
-                    - HTML
-                    - FLAG
-                    - REDIRECT
+                  - 'NULL'
+                  - JSON
+                  - TEXT
+                  - IMAGE
+                  - HTML
+                  - FLAG
+                  - REDIRECT
                   description: The modification type
                 value:
                   oneOf:
-                    - type: object
-                    - type: string
+                  - type: object
+                  - type: string
                   description: The value of the modification (structure depends on type)
                   example:
                     button_color: blue
@@ -506,10 +518,10 @@ components:
       properties:
         value:
           oneOf:
-            - type: object
-            - type: string
-            - type: number
-            - type: boolean
+          - type: object
+          - type: string
+          - type: number
+          - type: boolean
           description: Value of the flag
         metadata:
           $ref: '#/components/schemas/FlagMetadata'
@@ -521,10 +533,10 @@ components:
     ActivationRequest:
       type: object
       required:
-        - vid
-        - cid
-        - caid
-        - vaid
+      - vid
+      - cid
+      - caid
+      - vaid
       properties:
         vid:
           type: string
@@ -549,9 +561,9 @@ components:
     BatchActivationItem:
       type: object
       required:
-        - vid
-        - caid
-        - vaid
+      - vid
+      - caid
+      - vaid
       properties:
         vid:
           type: string
@@ -573,8 +585,8 @@ components:
     BatchActivationRequest:
       type: object
       required:
-        - cid
-        - batch
+      - cid
+      - batch
       properties:
         cid:
           type: string

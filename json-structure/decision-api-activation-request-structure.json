@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-structure/decision-api-activation-request-structure.json",
+  "name": "ActivationRequest",
+  "description": "ActivationRequest schema from AB Tasty Decision API",
+  "type": "object",
+  "properties": {
+    "vid": {
+      "type": "string",
+      "description": "Visitor ID",
+      "example": "user123"
+    },
+    "aid": {
+      "type": "string",
+      "description": "Anonymous ID (for experience continuity)",
+      "example": "session_xyz"
+    },
+    "cid": {
+      "type": "string",
+      "description": "Environment ID",
+      "example": "env_abc"
+    },
+    "caid": {
+      "type": "string",
+      "description": "Variation group ID",
+      "example": "vg_123"
+    },
+    "vaid": {
+      "type": "string",
+      "description": "Variation ID",
+      "example": "var_456"
+    }
+  },
+  "required": [
+    "vid",
+    "cid",
+    "caid",
+    "vaid"
+  ]
+}

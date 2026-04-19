@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flags-response-schema.json",
+  "title": "FlagsResponse",
+  "description": "Object with flag keys as properties",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/components/schemas/Flag"
+  }
+}

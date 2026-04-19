@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-structure/decision-api-campaign-response-normal-structure.json",
+  "name": "CampaignResponseNormal",
+  "description": "CampaignResponseNormal schema from AB Tasty Decision API",
+  "type": "object",
+  "properties": {
+    "visitorId": {
+      "type": "string",
+      "example": "user123"
+    },
+    "campaigns": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Campaign"
+      }
+    }
+  }
+}

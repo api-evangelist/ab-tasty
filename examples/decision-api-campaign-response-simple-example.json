@@ -1,0 +1,8 @@
+{
+  "campaignsVariation": [],
+  "mergedModifications": {
+    "button_color": "blue",
+    "feature_enabled": true,
+    "welcome_text": "Hello!"
+  }
+}

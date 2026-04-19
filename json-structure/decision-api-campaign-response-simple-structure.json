@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-structure/decision-api-campaign-response-simple-structure.json",
+  "name": "CampaignResponseSimple",
+  "description": "CampaignResponseSimple schema from AB Tasty Decision API",
+  "type": "object",
+  "properties": {
+    "campaignsVariation": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CampaignVariation"
+      }
+    },
+    "mergedModifications": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "All remote values merged into a single object",
+      "example": {
+        "button_color": "blue",
+        "feature_enabled": true,
+        "welcome_text": "Hello!"
+      }
+    }
+  }
+}

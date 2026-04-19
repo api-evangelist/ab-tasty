@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-variation-schema.json",
+  "title": "CampaignVariation",
+  "description": "CampaignVariation schema from AB Tasty Decision API",
+  "type": "object",
+  "properties": {
+    "campaignId": {
+      "type": "string",
+      "example": "campaign_abc"
+    },
+    "variationId": {
+      "type": "string",
+      "example": "var_456"
+    }
+  }
+}

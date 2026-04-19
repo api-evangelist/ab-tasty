@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-request-schema.json",
+  "title": "CampaignRequest",
+  "description": "CampaignRequest schema from AB Tasty Decision API",
+  "type": "object",
+  "properties": {
+    "visitor_id": {
+      "type": "string",
+      "description": "Unique identifier for the application user or website visitor",
+      "example": "user123"
+    },
+    "anonymous_id": {
+      "type": "string",
+      "description": "Identifier for anonymous visitors (e.g., session ID)",
+      "example": "session_xyz"
+    },
+    "context": {
+      "type": "object",
+      "description": "JSON object of key-value pairs describing the user and device context",
+      "additionalProperties": true,
+      "example": {
+        "device": "mobile",
+        "platform": "ios",
+        "subscription_level": "premium"
+      }
+    },
+    "visitor_consent": {
+      "type": "boolean",
+      "description": "Determines if visitor has consented to GDPR rules",
+      "default": true
+    },
+    "trigger_hit": {
+      "type": "boolean",
+      "description": "Determines whether a CAMPAIGN hit should be automatically sent",
+      "default": true
+    },
+    "decision_group": {
+      "type": "string",
+      "nullable": true,
+      "description": "Groups visitors to receive the same variation assignment",
+      "example": "VIP_users"
+    }
+  },
+  "required": [
+    "visitor_id"
+  ]
+}

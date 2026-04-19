@@ -1,0 +1,12 @@
+{
+  "visitor_id": "user123",
+  "anonymous_id": "session_xyz",
+  "context": {
+    "device": "mobile",
+    "platform": "ios",
+    "subscription_level": "premium"
+  },
+  "visitor_consent": true,
+  "trigger_hit": true,
+  "decision_group": "VIP_users"
+}

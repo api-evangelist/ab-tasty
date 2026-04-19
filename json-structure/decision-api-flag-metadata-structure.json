@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-structure/decision-api-flag-metadata-structure.json",
+  "name": "FlagMetadata",
+  "description": "FlagMetadata schema from AB Tasty Decision API",
+  "type": "object",
+  "properties": {
+    "campaignId": {
+      "type": "string",
+      "description": "Campaign ID",
+      "example": "campaign_abc"
+    },
+    "campaignName": {
+      "type": "string",
+      "description": "Campaign name",
+      "example": "New Checkout Experiment"
+    },
+    "slug": {
+      "type": "string",
+      "nullable": true,
+      "description": "Campaign slug (if configured)",
+      "example": "checkout-exp"
+    },
+    "type": {
+      "type": "string",
+      "description": "Campaign type",
+      "example": "ab"
+    },
+    "variationGroupId": {
+      "type": "string",
+      "description": "Variation group ID",
+      "example": "vg_123"
+    },
+    "variationGroupName": {
+      "type": "string",
+      "description": "Variation group name",
+      "example": "Variation Group A"
+    },
+    "variationId": {
+      "type": "string",
+      "description": "Variation ID",
+      "example": "var_456"
+    },
+    "variationName": {
+      "type": "string",
+      "description": "Variation name",
+      "example": "Treatment"
+    },
+    "reference": {
+      "type": "boolean",
+      "description": "Indicates if the variation is a reference variation",
+      "example": false
+    }
+  }
+}

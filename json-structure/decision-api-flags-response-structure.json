@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-structure/decision-api-flags-response-structure.json",
+  "name": "FlagsResponse",
+  "description": "Object with flag keys as properties",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/components/schemas/Flag"
+  }
+}

@@ -1,0 +1,330 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "AB Tasty"
+  description: "Unified vocabulary and taxonomy for AB Tasty APIs, covering server-side experimentation, feature flags, campaign management, and personalization workflows."
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - name: Decision API
+      namespace: decision-api
+      version: "2.0.0"
+      baseUrl: https://decision.flagship.io/v2
+      status: active
+      description: Server-side decision engine for visitor campaign and feature flag evaluation
+    - name: Remote Control API
+      namespace: remote-control-api
+      version: "1.0"
+      baseUrl: https://docs.abtasty.com/server-side/remote-control-api
+      status: active
+      description: Programmatic control of AB Tasty SDK for QA and testing
+    - name: Public API
+      namespace: public-api
+      version: "1.0"
+      baseUrl: https://app2.abtasty.com
+      status: active
+      description: Campaign management and account administration API
+
+  resources:
+    - name: campaigns
+      description: Experiment and personalization campaigns that define variation assignments
+      apis:
+        - decision-api
+        - remote-control-api
+        - public-api
+      actions:
+        - get
+        - list
+        - create
+        - update
+        - pause
+        - run
+        - duplicate
+
+    - name: flags
+      description: Feature flags with values and metadata for progressive rollouts
+      apis:
+        - decision-api
+      actions:
+        - get
+        - list
+
+    - name: variations
+      description: Experiment variations containing modifications and content changes
+      apis:
+        - decision-api
+        - remote-control-api
+      actions:
+        - get
+        - list
+        - create
+        - update
+
+    - name: visitors
+      description: Website or app visitors with context attributes for targeting
+      apis:
+        - decision-api
+      actions:
+        - evaluate
+        - activate
+
+    - name: goals
+      description: Conversion goals tracked against experiment variations
+      apis:
+        - remote-control-api
+        - public-api
+      actions:
+        - get
+        - list
+        - create
+        - update
+
+    - name: projects
+      description: Top-level organizational units containing campaigns
+      apis:
+        - remote-control-api
+        - public-api
+      actions:
+        - get
+        - list
+        - create
+
+    - name: users
+      description: Account users with role-based access control
+      apis:
+        - public-api
+      actions:
+        - get
+        - list
+        - create
+        - update
+
+  actions:
+    - name: get
+      description: Retrieve a single resource by identifier
+      httpMethod: GET
+      pattern: read
+    - name: list
+      description: Retrieve a collection of resources
+      httpMethod: GET
+      pattern: read
+    - name: create
+      description: Create a new resource
+      httpMethod: POST
+      pattern: write
+    - name: update
+      description: Update an existing resource
+      httpMethod: PUT
+      pattern: write
+    - name: evaluate
+      description: Evaluate visitor context and return campaign/flag decisions
+      httpMethod: POST
+      pattern: query
+    - name: activate
+      description: Manually trigger campaign variation activation
+      httpMethod: POST
+      pattern: write
+    - name: pause
+      description: Pause a running campaign
+      httpMethod: POST
+      pattern: write
+    - name: run
+      description: Start or resume a campaign
+      httpMethod: POST
+      pattern: write
+    - name: duplicate
+      description: Duplicate an existing campaign
+      httpMethod: POST
+      pattern: write
+
+  schemas:
+    core:
+      - name: CampaignRequest
+        description: Request body for evaluating visitor campaign assignments
+        keyProperties:
+          - visitor_id
+          - context
+          - visitor_consent
+          - decision_group
+      - name: Campaign
+        description: Campaign assignment with variation and modification details
+        keyProperties:
+          - id
+          - variationGroupId
+          - variation
+      - name: Flag
+        description: Feature flag with value and campaign metadata
+        keyProperties:
+          - value
+          - metadata
+    reporting:
+      - name: CampaignResponseNormal
+        description: Normal mode campaign response with full campaign details
+        keyProperties:
+          - visitorId
+          - campaigns
+      - name: CampaignResponseSimple
+        description: Simple mode response with merged modifications
+        keyProperties:
+          - campaignsVariation
+          - mergedModifications
+      - name: FlagsResponse
+        description: Map of flag keys to flag values and metadata
+        keyProperties: []
+    activation:
+      - name: ActivationRequest
+        description: Request for manual single campaign activation
+        keyProperties:
+          - vid
+          - cid
+          - caid
+          - vaid
+      - name: BatchActivationRequest
+        description: Request for batch campaign activations
+        keyProperties:
+          - cid
+          - batch
+
+  parameters:
+    identifiers:
+      - name: environmentId
+        description: Identifies the account and environment (preprod or prod)
+        in: path
+        type: string
+      - name: campaignId
+        description: Campaign identifier or slug
+        in: path
+        type: string
+    filters:
+      - name: mode
+        description: Response format mode (normal, simple, full)
+        in: query
+        type: string
+      - name: exposeAllKeys
+        description: Whether to return all flag keys including null values
+        in: query
+        type: boolean
+
+  enums:
+    response_modes:
+      - normal
+      - simple
+      - full
+    modification_types:
+      - 'NULL'
+      - JSON
+      - TEXT
+      - IMAGE
+      - HTML
+      - FLAG
+      - REDIRECT
+
+  authentication:
+    schemes:
+      - name: ApiKeyAuth
+        type: apiKey
+        placement: header
+        headerName: x-api-key
+        description: API key from Flagship Platform Parameters/Environment & Security
+    rateLimits:
+      - endpoint: /campaigns
+        limit: "200 req/s"
+        burst: "600 req/s"
+
+capability:
+  workflows:
+    - name: Feature Experimentation
+      file: capabilities/feature-experimentation.yaml
+      description: Unified workflow for server-side feature experimentation, A/B testing, and feature flag management
+      apisConsumed:
+        - Decision API
+      toolCount: 4
+      personas:
+        - Developer
+        - Product Manager
+      domains:
+        - Experimentation
+        - Feature Flags
+
+  personas:
+    - id: developer
+      name: Developer
+      description: Backend or frontend developer implementing server-side experiments and feature flags
+      workflows:
+        - Feature Experimentation
+
+    - id: product-manager
+      name: Product Manager
+      description: Product manager monitoring experiment assignments and flag rollouts
+      workflows:
+        - Feature Experimentation
+
+    - id: qa-engineer
+      name: QA Engineer
+      description: Quality assurance engineer using Remote Control API to test experiments
+      workflows: []
+
+  domains:
+    - name: Experimentation
+      description: A/B testing, multivariate testing, and experiment management
+      resources:
+        - campaigns
+        - variations
+        - visitors
+    - name: Feature Flags
+      description: Progressive feature releases and feature toggles
+      resources:
+        - flags
+        - campaigns
+    - name: Analytics
+      description: Conversion tracking and experiment measurement
+      resources:
+        - goals
+
+  namespaces:
+    - name: decision-api
+      type: consumed
+      baseUri: https://decision.flagship.io/v2
+    - name: feature-experimentation-api
+      type: rest-exposed
+      port: 8080
+    - name: feature-experimentation-mcp
+      type: mcp-exposed
+      port: 9090
+
+  binds:
+    - name: AB_TASTY_API_KEY
+      description: AB Tasty API key for Decision API authentication
+      workflows:
+        - Feature Experimentation
+
+crossReference:
+  - resource: campaigns
+    operations:
+      - get-campaigns
+      - get-campaign
+    workflows:
+      - Feature Experimentation
+    personas:
+      - Developer
+      - Product Manager
+
+  - resource: flags
+    operations:
+      - get-flags
+    workflows:
+      - Feature Experimentation
+    personas:
+      - Developer
+      - Product Manager
+
+  - resource: visitors
+    operations:
+      - activate-campaign
+    workflows:
+      - Feature Experimentation
+    personas:
+      - Developer
+      - QA Engineer

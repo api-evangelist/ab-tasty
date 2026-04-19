@@ -1,0 +1,135 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "abt": "https://abtasty.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ActivationRequest": "abt:ActivationRequest",
+    "BatchActivationItem": "abt:BatchActivationItem",
+    "BatchActivationRequest": "abt:BatchActivationRequest",
+    "Campaign": "abt:Campaign",
+    "CampaignRequest": "abt:CampaignRequest",
+    "CampaignResponseFull": "abt:CampaignResponseFull",
+    "CampaignResponseNormal": "abt:CampaignResponseNormal",
+    "CampaignResponseSimple": "abt:CampaignResponseSimple",
+    "CampaignVariation": "abt:CampaignVariation",
+    "Flag": "abt:Flag",
+    "FlagMetadata": "abt:FlagMetadata",
+    "FlagsResponse": "abt:FlagsResponse",
+    "SingleCampaignRequest": "abt:SingleCampaignRequest",
+    "visitorId": {
+      "@id": "abt:visitor_id",
+      "@type": "xsd:string"
+    },
+    "anonymousId": {
+      "@id": "abt:anonymous_id",
+      "@type": "xsd:string"
+    },
+    "context": {
+      "@id": "abt:context"
+    },
+    "visitorConsent": {
+      "@id": "abt:visitor_consent",
+      "@type": "xsd:boolean"
+    },
+    "triggerHit": {
+      "@id": "abt:trigger_hit",
+      "@type": "xsd:boolean"
+    },
+    "decisionGroup": {
+      "@id": "abt:decision_group",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "abt:id",
+      "@type": "xsd:string"
+    },
+    "variationGroupId": {
+      "@id": "abt:variationGroupId",
+      "@type": "xsd:string"
+    },
+    "variation": {
+      "@id": "abt:variation"
+    },
+    "campaignId": {
+      "@id": "abt:campaignId",
+      "@type": "xsd:string"
+    },
+    "variationId": {
+      "@id": "abt:variationId",
+      "@type": "xsd:string"
+    },
+    "campaigns": {
+      "@id": "abt:campaigns",
+      "@container": "@set"
+    },
+    "value": {
+      "@id": "abt:value",
+      "@type": "xsd:string"
+    },
+    "metadata": {
+      "@id": "abt:metadata",
+      "@type": "xsd:string"
+    },
+    "vid": {
+      "@id": "abt:vid",
+      "@type": "xsd:string"
+    },
+    "aid": {
+      "@id": "abt:aid",
+      "@type": "xsd:string"
+    },
+    "cid": {
+      "@id": "abt:cid",
+      "@type": "xsd:string"
+    },
+    "caid": {
+      "@id": "abt:caid",
+      "@type": "xsd:string"
+    },
+    "vaid": {
+      "@id": "abt:vaid",
+      "@type": "xsd:string"
+    },
+    "batch": {
+      "@id": "abt:batch",
+      "@container": "@set"
+    },
+    "campaignsVariation": {
+      "@id": "abt:campaignsVariation",
+      "@container": "@set"
+    },
+    "mergedModifications": {
+      "@id": "abt:mergedModifications"
+    },
+    "qt": {
+      "@id": "abt:qt",
+      "@type": "xsd:integer"
+    },
+    "campaignName": {
+      "@id": "abt:campaignName",
+      "@type": "xsd:string"
+    },
+    "slug": {
+      "@id": "abt:slug",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "abt:type",
+      "@type": "xsd:string"
+    },
+    "variationGroupName": {
+      "@id": "abt:variationGroupName",
+      "@type": "xsd:string"
+    },
+    "variationName": {
+      "@id": "abt:variationName",
+      "@type": "xsd:string"
+    },
+    "reference": {
+      "@id": "abt:reference",
+      "@type": "xsd:boolean"
+    }
+  }
+}

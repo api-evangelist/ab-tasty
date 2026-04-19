@@ -1,0 +1,14 @@
+{
+  "id": "campaign_abc",
+  "variationGroupId": "vg_123",
+  "variation": {
+    "id": "var_456",
+    "modifications": {
+      "type": "REDIRECT",
+      "value": {
+        "button_color": "blue",
+        "feature_enabled": true
+      }
+    }
+  }
+}

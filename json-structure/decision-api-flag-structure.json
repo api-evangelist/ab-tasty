@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-structure/decision-api-flag-structure.json",
+  "name": "Flag",
+  "description": "Flag schema from AB Tasty Decision API",
+  "type": "object",
+  "properties": {
+    "value": {
+      "oneOf": [
+        {
+          "type": "object"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        }
+      ],
+      "description": "Value of the flag"
+    },
+    "metadata": {
+      "$ref": "#/components/schemas/FlagMetadata"
+    }
+  }
+}

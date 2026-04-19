@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-single-campaign-request-schema.json",
+  "title": "SingleCampaignRequest",
+  "description": "SingleCampaignRequest schema from AB Tasty Decision API",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/CampaignRequest"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "format_response": {
+          "type": "boolean",
+          "description": "If true, response will be formatted according to modification type",
+          "default": false
+        },
+        "default_redirect_url": {
+          "type": "string",
+          "description": "Default URL for 302 redirect if no modification redirection is defined",
+          "example": "https://example.com/default"
+        }
+      }
+    }
+  ]
+}
