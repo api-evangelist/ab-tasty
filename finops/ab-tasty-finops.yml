@@ -1,149 +1,88 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: AB Tasty
+providerId: ab-tasty
+created: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
+tags:
+  - Experimentation
+  - A/B Testing
+  - Personalization
+  - Feature Flags
+  - FinOps
+  - FOCUS
+description: AB Tasty is sold as an annual contract priced by traffic volume and feature scope. There
+  is no public per-call price; FinOps mapping focuses on the contract structure and traffic-tier meters.
+notes: No public developer pricing — placeholder only. Plan price is quoted per opportunity by AB Tasty
+  sales.
+sources:
+  - https://www.abtasty.com/pricing/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-provider: AB Tasty
-providerId: ab-tasty
-publisherName: AB Tasty
-serviceCategory: API
-created: '2026-05-04'
-modified: '2026-05-04'
-tags:
-  - Aggregation
-  - Experimentation
-  - Feature Flags
-  - Personalization
-  - A/B Testing
-  - FinOps
-  - Cost Management
-  - FOCUS
-description: FinOps framework definition for the AB Tasty API surface. Provides a FOCUS-aligned mapping
-  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+publisherName: AB Tasty SAS
+serviceCategory: Experimentation / Personalization
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
-  billingCurrency: USD
+  pricingCategory: Subscription
+  billingFrequency: Annual
+  billingCurrency: USD/EUR
   chargeCategories:
-    - Usage
     - Purchase
-    - Tax
-    - Credit
     - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
   ServiceName: AB Tasty
-  ServiceCategory: Developer Tools / API
+  ServiceCategory: Experimentation / Personalization
   ProviderName: AB Tasty
-  PublisherName: AB Tasty
-  InvoiceIssuerName: AB Tasty
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  PublisherName: AB Tasty SAS
+  InvoiceIssuerName: AB Tasty SAS
   BillingCurrency: USD
-  ChargeCategory: Usage
+  PricingCategory: Subscription
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
-    aggregation: sum
+  - name: monthly_unique_visitors
+    description: Tracked unique visitors per month — typical traffic-tier meter for experimentation contracts.
+    unit: visitor
+    aggregation: max
     dimensions:
-      - api
-      - endpoint
-      - tier
+      - site
       - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
+  - name: pageviews
+    description: Pageviews subjected to experimentation / personalization rules.
+    unit: pageview
     aggregation: sum
     dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
+      - site
+      - campaign
+  - name: feature_flag_evaluations
+    description: Feature-flag evaluations served by Flagship / release-management SDKs.
+    unit: evaluation
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: AB Tasty Decision API
-    baseURL: ''
-    tags:
-      - Decision
-      - Experimentation
-      - Feature Flags
-      - Server Side
-    serviceName: AB Tasty Decision API
-    serviceCategory: API
-  - name: AB Tasty Remote Control API
-    baseURL: ''
-    tags:
-      - Remote Control
-      - Campaigns
-      - Experimentation
-    serviceName: AB Tasty Remote Control API
-    serviceCategory: API
-  - name: AB Tasty Public API
-    baseURL: ''
-    tags:
-      - Campaigns
-      - Integrations
-      - Management
-    serviceName: AB Tasty Public API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+      - environment
+      - feature
+  - name: contract_year
+    description: Annual subscription line item.
+    unit: year
+    aggregation: count
+    dimensions:
+      - plan
+principles:
+  - name: Visibility
+    description: Use AB Tasty dashboards and the analytics export to track campaign volume against the
+      contracted traffic ceiling each month.
+  - name: Allocation
+    description: Tag campaigns and feature flags by product team / business unit so cost can be allocated
+      against the products driving experimentation volume.
+  - name: Optimization
+    description: Sunset stale campaigns and stop running long-tail experiments to keep traffic inside
+      the contracted tier; consolidate environments.
+  - name: Accountability
+    description: Growth / product leadership owns the AB Tasty subscription; engineering owns Flagship
+      SDK integrations. Review traffic vs contract ceiling monthly with the AB Tasty CSM.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
