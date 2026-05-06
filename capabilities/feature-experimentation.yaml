@@ -1,142 +1,224 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "AB Tasty Feature Experimentation"
-  description: "Unified workflow for server-side feature experimentation, A/B testing, and feature flag management. Enables developers and product teams to evaluate campaigns, retrieve flag values, and track activations for controlled rollouts and experiments."
+  label: AB Tasty Feature Experimentation
+  description: Unified workflow for server-side feature experimentation, A/B testing, and feature flag management. Enables
+    developers and product teams to evaluate campaigns, retrieve flag values, and track activations for controlled rollouts
+    and experiments.
   tags:
-    - AB Tasty
-    - Experimentation
-    - Feature Flags
-    - A/B Testing
-    - Server Side
-  created: "2026-04-19"
-  modified: "2026-04-19"
-
+  - AB Tasty
+  - Experimentation
+  - Feature Flags
+  - A/B Testing
+  - Server Side
+  created: '2026-04-19'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      AB_TASTY_API_KEY: AB_TASTY_API_KEY
-
+- namespace: env
+  keys:
+    AB_TASTY_API_KEY: AB_TASTY_API_KEY
 capability:
   consumes:
-    - import: decision-api
-      location: ./shared/decision-api.yaml
-
+  - type: http
+    namespace: decision-api
+    baseUri: https://decision.flagship.io/v2
+    description: AB Tasty Decision API for server-side experimentation and feature flagging
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{AB_TASTY_API_KEY}}'
+      placement: header
+    resources:
+    - name: campaigns
+      path: /{environmentId}/campaigns
+      description: Campaign assignment operations for all campaigns
+      operations:
+      - name: get-campaigns
+        method: POST
+        description: Retrieve all campaign assignments for a visitor
+        inputParameters:
+        - name: environmentId
+          in: path
+          type: string
+          required: true
+          description: Environment identifier
+        - name: mode
+          in: query
+          type: string
+          required: false
+          description: Response format mode (normal, simple, full)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: campaign
+      path: /{environmentId}/campaigns/{campaignId}
+      description: Single campaign assignment operations
+      operations:
+      - name: get-campaign
+        method: POST
+        description: Retrieve a specific campaign assignment for a visitor
+        inputParameters:
+        - name: environmentId
+          in: path
+          type: string
+          required: true
+          description: Environment identifier
+        - name: campaignId
+          in: path
+          type: string
+          required: true
+          description: Campaign identifier or slug
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: flags
+      path: /{environmentId}/flags
+      description: Feature flag operations
+      operations:
+      - name: get-flags
+        method: POST
+        description: Retrieve feature flags with values and metadata for a visitor
+        inputParameters:
+        - name: environmentId
+          in: path
+          type: string
+          required: true
+          description: Environment identifier
+        - name: exposeAllKeys
+          in: query
+          type: boolean
+          required: false
+          description: If true, returns all flag keys including null values
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: activate
+      path: /activate
+      description: Manual campaign activation operations
+      operations:
+      - name: activate-campaign
+        method: POST
+        description: Manually activate a campaign variation for a visitor
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8080
-      namespace: feature-experimentation-api
-      description: "Unified REST API for AB Tasty server-side feature experimentation and campaign management."
-      resources:
-        - path: /v1/campaigns
-          name: campaigns
-          description: "Retrieve campaign assignments for a visitor based on context"
-          operations:
-            - method: POST
-              name: get-campaigns
-              description: "Evaluate visitor context and retrieve all matching campaign assignments"
-              call: "decision-api.get-campaigns"
-              with:
-                environmentId: "rest.environmentId"
-                mode: "rest.mode"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/campaigns/{campaignId}
-          name: campaign
-          description: "Retrieve a specific campaign assignment for a visitor"
-          operations:
-            - method: POST
-              name: get-campaign
-              description: "Get assignment for a specific campaign by ID"
-              call: "decision-api.get-campaign"
-              with:
-                environmentId: "rest.environmentId"
-                campaignId: "rest.campaignId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/flags
-          name: flags
-          description: "Feature flag evaluation operations"
-          operations:
-            - method: POST
-              name: get-flags
-              description: "Retrieve feature flag values and metadata for a visitor"
-              call: "decision-api.get-flags"
-              with:
-                environmentId: "rest.environmentId"
-                exposeAllKeys: "rest.exposeAllKeys"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/activate
-          name: activate
-          description: "Manual campaign activation"
-          operations:
-            - method: POST
-              name: activate-campaign
-              description: "Manually activate a campaign variation for a visitor"
-              call: "decision-api.activate-campaign"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9090
-      namespace: feature-experimentation-mcp
-      transport: http
-      description: "MCP server for AI-assisted feature experimentation and A/B test management."
-      tools:
-        - name: get-visitor-campaigns
-          description: "Evaluate a visitor's context and retrieve all active campaign and variation assignments for server-side rendering"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "decision-api.get-campaigns"
-          with:
-            environmentId: "tools.environmentId"
-            mode: "tools.mode"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: get-visitor-campaign
-          description: "Retrieve a specific campaign assignment for a visitor, useful for targeted experiment evaluation"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "decision-api.get-campaign"
-          with:
-            environmentId: "tools.environmentId"
-            campaignId: "tools.campaignId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: get-visitor-flags
-          description: "Retrieve feature flag values and metadata for a visitor, used to implement feature toggles and progressive rollouts"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "decision-api.get-flags"
-          with:
-            environmentId: "tools.environmentId"
-            exposeAllKeys: "tools.exposeAllKeys"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: activate-experiment
-          description: "Manually activate a campaign variation assignment, used when auto-activation is disabled via trigger_hit=false"
-          hints:
-            readOnly: false
-            destructive: false
-            idempotent: false
-          call: "decision-api.activate-campaign"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: feature-experimentation-api
+    description: Unified REST API for AB Tasty server-side feature experimentation and campaign management.
+    resources:
+    - path: /v1/campaigns
+      name: campaigns
+      description: Retrieve campaign assignments for a visitor based on context
+      operations:
+      - method: POST
+        name: get-campaigns
+        description: Evaluate visitor context and retrieve all matching campaign assignments
+        call: decision-api.get-campaigns
+        with:
+          environmentId: rest.environmentId
+          mode: rest.mode
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/campaigns/{campaignId}
+      name: campaign
+      description: Retrieve a specific campaign assignment for a visitor
+      operations:
+      - method: POST
+        name: get-campaign
+        description: Get assignment for a specific campaign by ID
+        call: decision-api.get-campaign
+        with:
+          environmentId: rest.environmentId
+          campaignId: rest.campaignId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/flags
+      name: flags
+      description: Feature flag evaluation operations
+      operations:
+      - method: POST
+        name: get-flags
+        description: Retrieve feature flag values and metadata for a visitor
+        call: decision-api.get-flags
+        with:
+          environmentId: rest.environmentId
+          exposeAllKeys: rest.exposeAllKeys
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/activate
+      name: activate
+      description: Manual campaign activation
+      operations:
+      - method: POST
+        name: activate-campaign
+        description: Manually activate a campaign variation for a visitor
+        call: decision-api.activate-campaign
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: feature-experimentation-mcp
+    transport: http
+    description: MCP server for AI-assisted feature experimentation and A/B test management.
+    tools:
+    - name: get-visitor-campaigns
+      description: Evaluate a visitor's context and retrieve all active campaign and variation assignments for server-side
+        rendering
+      hints:
+        readOnly: true
+        openWorld: false
+      call: decision-api.get-campaigns
+      with:
+        environmentId: tools.environmentId
+        mode: tools.mode
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-visitor-campaign
+      description: Retrieve a specific campaign assignment for a visitor, useful for targeted experiment evaluation
+      hints:
+        readOnly: true
+        openWorld: false
+      call: decision-api.get-campaign
+      with:
+        environmentId: tools.environmentId
+        campaignId: tools.campaignId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-visitor-flags
+      description: Retrieve feature flag values and metadata for a visitor, used to implement feature toggles and progressive
+        rollouts
+      hints:
+        readOnly: true
+        openWorld: false
+      call: decision-api.get-flags
+      with:
+        environmentId: tools.environmentId
+        exposeAllKeys: tools.exposeAllKeys
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: activate-experiment
+      description: Manually activate a campaign variation assignment, used when auto-activation is disabled via trigger_hit=false
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: decision-api.activate-campaign
+      outputParameters:
+      - type: object
+        mapping: $.
