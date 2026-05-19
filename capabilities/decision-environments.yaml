@@ -1,0 +1,172 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AB Tasty Decision API — Environments
+  description: 'AB Tasty Decision API — Environments. 3 operations. Lead operation: AB Tasty Post Environment Campaigns. Self-contained
+    Naftiko capability covering one Ab Tasty business surface.'
+  tags:
+  - Ab Tasty
+  - Environments
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AB_TASTY_API_KEY: AB_TASTY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: decision-environments
+    baseUri: https://decision.flagship.io/v2
+    description: AB Tasty Decision API — Environments business capability. Self-contained, no shared references.
+    resources:
+    - name: environmentId-campaigns
+      path: /{environmentId}/campaigns
+      operations:
+      - name: postenvironmentidcampaigns
+        method: POST
+        description: AB Tasty Post Environment Campaigns
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: environmentId-campaigns-campaignId
+      path: /{environmentId}/campaigns/{campaignId}
+      operations:
+      - name: postenvironmentidcampaignscampaignid
+        method: POST
+        description: AB Tasty Post Environment Campaigns
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: environmentId-flags
+      path: /{environmentId}/flags
+      operations:
+      - name: postenvironmentidflags
+        method: POST
+        description: AB Tasty Post Environment Flags
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: exposeAllKeys
+          in: query
+          type: boolean
+          description: If true, all flag keys (even flag keys with null values) will be returned
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.AB_TASTY_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: decision-environments-rest
+    port: 8080
+    description: REST adapter for AB Tasty Decision API — Environments. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/{environmentid}/campaigns
+      name: environmentid-campaigns
+      description: REST surface for environmentId-campaigns.
+      operations:
+      - method: POST
+        name: postenvironmentidcampaigns
+        description: AB Tasty Post Environment Campaigns
+        call: decision-environments.postenvironmentidcampaigns
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{environmentid}/campaigns/{campaignid}
+      name: environmentid-campaigns-campaignid
+      description: REST surface for environmentId-campaigns-campaignId.
+      operations:
+      - method: POST
+        name: postenvironmentidcampaignscampaignid
+        description: AB Tasty Post Environment Campaigns
+        call: decision-environments.postenvironmentidcampaignscampaignid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{environmentid}/flags
+      name: environmentid-flags
+      description: REST surface for environmentId-flags.
+      operations:
+      - method: POST
+        name: postenvironmentidflags
+        description: AB Tasty Post Environment Flags
+        call: decision-environments.postenvironmentidflags
+        with:
+          exposeAllKeys: rest.exposeAllKeys
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: decision-environments-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AB Tasty Decision API — Environments. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: ab-tasty-post-environment-campaigns
+      description: AB Tasty Post Environment Campaigns
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: decision-environments.postenvironmentidcampaigns
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ab-tasty-post-environment-campaigns-2
+      description: AB Tasty Post Environment Campaigns
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: decision-environments.postenvironmentidcampaignscampaignid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ab-tasty-post-environment-flags
+      description: AB Tasty Post Environment Flags
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: decision-environments.postenvironmentidflags
+      with:
+        exposeAllKeys: tools.exposeAllKeys
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
