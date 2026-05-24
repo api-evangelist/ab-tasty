@@ -236,6 +236,8 @@ common:
     description: Akamai worker integration for CDN-level feature experimentation
   - name: Shopify Hydrogen
     description: Shopify Hydrogen framework integration for headless commerce experimentation
+- type: LLMsTxt
+  url: https://docs.abtasty.com/llms.txt
 created: '2025-06-05'
 modified: '2026-05-19'
 position: Consuming
