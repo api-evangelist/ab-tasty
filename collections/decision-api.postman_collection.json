@@ -1,0 +1,2956 @@
+{
+  "item": [
+    {
+      "id": "727aa27e-b876-4ec5-8c04-5965dbba52da",
+      "name": "Activate",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e0f58dd2-497b-4df6-8f98-aa4e51966a63",
+          "name": "AB Tasty Post Activate",
+          "request": {
+            "name": "AB Tasty Post Activate",
+            "description": {
+              "content": "Assigns a user to a variation. Should be used to manually activate a single campaign and variation\nin cases where you choose not to activate them automatically (when trigger_hit is false).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vid\": \"<string>\",\n  \"cid\": \"<string>\",\n  \"caid\": \"<string>\",\n  \"vaid\": \"<string>\",\n  \"aid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c9351a58-c5c0-4496-a081-2247a8edc75e",
+              "name": "No Content - Activation successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vid\": \"user123\",\n  \"cid\": \"env_abc\",\n  \"caid\": \"vg_123\",\n  \"vaid\": \"var_456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "06ceab33-670c-40d8-b9d8-efa7bda31118",
+              "name": "Authentication information is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vid\": \"user123\",\n  \"cid\": \"env_abc\",\n  \"caid\": \"vg_123\",\n  \"vaid\": \"var_456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invalid API key\",\n  \"code\": \"UNAUTHORIZED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0c9eaa6f-6508-4002-9cc1-43e541d306b2",
+      "name": "Campaigns",
+      "description": {
+        "content": "Campaign assignment operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9a4d21f7-1437-4a5f-a490-cd50e89bc29d",
+          "name": "AB Tasty Post Environment Campaigns",
+          "request": {
+            "name": "AB Tasty Post Environment Campaigns",
+            "description": {
+              "content": "Retrieves all the campaigns that correspond to the specified user and context attributes.\nBy default, the API will send a CAMPAIGN hit to Flagship for each campaign in the response.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environmentId",
+                "campaigns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "normal",
+                  "description": "Specifies the format of the response body"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environmentId",
+                  "description": "(Required) Identifies your account and environment (preprod or prod)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"visitor_id\": \"<string>\",\n  \"anonymous_id\": \"<string>\",\n  \"context\": {\n    \"key_0\": true,\n    \"key_1\": 3707.3222772176505,\n    \"key_2\": \"string\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "66924dda-6791-4a4c-bc3e-1bc0ea98f7c0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "normal"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\"\n  },\n  \"visitor_consent\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"visitorId\": \"user123\",\n  \"campaigns\": [\n    {\n      \"id\": \"campaign_abc\",\n      \"variationGroupId\": \"vg_123\",\n      \"variation\": {\n        \"id\": \"var_456\",\n        \"modifications\": {\n          \"type\": \"JSON\",\n          \"value\": {\n            \"button_color\": \"blue\",\n            \"feature_enabled\": true\n          }\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba384098-3293-40f1-b3b3-9470a1e4f607",
+              "name": "Authentication information is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "normal"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\"\n  },\n  \"visitor_consent\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invalid API key\",\n  \"code\": \"UNAUTHORIZED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d70f2032-b309-4b8b-ad93-5d8c0a7494e1",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "normal"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\"\n  },\n  \"visitor_consent\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Rate limit exceeded. Maximum 200 req/s with burst of 600 req/s\",\n  \"code\": \"RATE_LIMIT_EXCEEDED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c1e47017-bb2a-40cf-8d51-ac6b91d63ab4",
+          "name": "AB Tasty Post Environment Campaigns",
+          "request": {
+            "name": "AB Tasty Post Environment Campaigns",
+            "description": {
+              "content": "Retrieves the assignment of your visitor ID with a specific context to the specified campaign ID.\nBy default, the API will send a CAMPAIGN hit to Flagship.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environmentId",
+                "campaigns",
+                ":campaignId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environmentId",
+                  "description": "(Required) Identifies your account and environment (preprod or prod)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaignId",
+                  "description": "(Required) Campaign ID or slug"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"visitor_id\": \"<string>\",\n  \"anonymous_id\": \"<string>\",\n  \"context\": {\n    \"key_0\": \"string\",\n    \"key_1\": 1264.7287361092397\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"<string>\",\n  \"format_response\": false,\n  \"default_redirect_url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "af47bddf-d3d3-4a65-a692-9280742b5e70",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID or slug"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\",\n  \"format_response\": false,\n  \"default_redirect_url\": \"https://example.com/default\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"campaign_abc\",\n  \"variationGroupId\": \"vg_123\",\n  \"variation\": {\n    \"id\": \"var_456\",\n    \"modifications\": {\n      \"type\": \"JSON\",\n      \"value\": {\n        \"button_color\": \"blue\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed5f8332-7020-4cd5-a80c-0121244ea9c4",
+              "name": "Redirect response (when default_redirect_url is specified)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID or slug"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\",\n  \"format_response\": false,\n  \"default_redirect_url\": \"https://example.com/default\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Redirect URL",
+                  "key": "Location",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b6e83c31-e72b-4548-80dd-231e985bf1bc",
+              "name": "Authentication information is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID or slug"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\",\n  \"format_response\": false,\n  \"default_redirect_url\": \"https://example.com/default\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invalid API key\",\n  \"code\": \"UNAUTHORIZED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60cef468-7662-4354-a9ec-cb2357cc520d",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID or slug"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\",\n  \"format_response\": false,\n  \"default_redirect_url\": \"https://example.com/default\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Rate limit exceeded. Maximum 200 req/s with burst of 600 req/s\",\n  \"code\": \"RATE_LIMIT_EXCEEDED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9d625458-c8e3-48ab-9c23-a5fa0c2a6661",
+      "name": "Environments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "20b4a312-887d-4a1a-b927-b056bb31e17d",
+          "name": "AB Tasty Post Environment Campaigns",
+          "request": {
+            "name": "AB Tasty Post Environment Campaigns",
+            "description": {
+              "content": "Retrieves all the campaigns that correspond to the specified user and context attributes.\nBy default, the API will send a CAMPAIGN hit to Flagship for each campaign in the response.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environmentId",
+                "campaigns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "normal",
+                  "description": "Specifies the format of the response body"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environmentId",
+                  "description": "(Required) Identifies your account and environment (preprod or prod)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"visitor_id\": \"<string>\",\n  \"anonymous_id\": \"<string>\",\n  \"context\": {\n    \"key_0\": true,\n    \"key_1\": 3707.3222772176505,\n    \"key_2\": \"string\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c1257315-7627-43c1-990d-7f9609f62aa5",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "normal"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\"\n  },\n  \"visitor_consent\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"visitorId\": \"user123\",\n  \"campaigns\": [\n    {\n      \"id\": \"campaign_abc\",\n      \"variationGroupId\": \"vg_123\",\n      \"variation\": {\n        \"id\": \"var_456\",\n        \"modifications\": {\n          \"type\": \"JSON\",\n          \"value\": {\n            \"button_color\": \"blue\",\n            \"feature_enabled\": true\n          }\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00283c38-e01b-4db4-9332-8e125ce0806c",
+              "name": "Authentication information is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "normal"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\"\n  },\n  \"visitor_consent\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invalid API key\",\n  \"code\": \"UNAUTHORIZED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1947c35-e2f0-4255-860b-2bfc3671691d",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "normal"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\"\n  },\n  \"visitor_consent\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Rate limit exceeded. Maximum 200 req/s with burst of 600 req/s\",\n  \"code\": \"RATE_LIMIT_EXCEEDED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a277556c-0f22-456b-96a3-ab26f9897021",
+          "name": "AB Tasty Post Environment Campaigns",
+          "request": {
+            "name": "AB Tasty Post Environment Campaigns",
+            "description": {
+              "content": "Retrieves the assignment of your visitor ID with a specific context to the specified campaign ID.\nBy default, the API will send a CAMPAIGN hit to Flagship.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environmentId",
+                "campaigns",
+                ":campaignId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environmentId",
+                  "description": "(Required) Identifies your account and environment (preprod or prod)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaignId",
+                  "description": "(Required) Campaign ID or slug"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"visitor_id\": \"<string>\",\n  \"anonymous_id\": \"<string>\",\n  \"context\": {\n    \"key_0\": \"string\",\n    \"key_1\": 1264.7287361092397\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"<string>\",\n  \"format_response\": false,\n  \"default_redirect_url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dd8344fd-4c17-4f4d-b879-dbbc2f61e8f7",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID or slug"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\",\n  \"format_response\": false,\n  \"default_redirect_url\": \"https://example.com/default\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"campaign_abc\",\n  \"variationGroupId\": \"vg_123\",\n  \"variation\": {\n    \"id\": \"var_456\",\n    \"modifications\": {\n      \"type\": \"JSON\",\n      \"value\": {\n        \"button_color\": \"blue\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "750774e3-2088-40f0-883c-a557342106aa",
+              "name": "Redirect response (when default_redirect_url is specified)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID or slug"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\",\n  \"format_response\": false,\n  \"default_redirect_url\": \"https://example.com/default\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Redirect URL",
+                  "key": "Location",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fc06f378-54b9-43c5-b373-a5c62fd43f7d",
+              "name": "Authentication information is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID or slug"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\",\n  \"format_response\": false,\n  \"default_redirect_url\": \"https://example.com/default\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invalid API key\",\n  \"code\": \"UNAUTHORIZED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0cfbc47-19e2-4108-ad9e-f858fd1afd9b",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID or slug"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\",\n  \"format_response\": false,\n  \"default_redirect_url\": \"https://example.com/default\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Rate limit exceeded. Maximum 200 req/s with burst of 600 req/s\",\n  \"code\": \"RATE_LIMIT_EXCEEDED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0344f035-395e-40da-a866-60d8270c2dd9",
+          "name": "AB Tasty Post Environment Flags",
+          "request": {
+            "name": "AB Tasty Post Environment Flags",
+            "description": {
+              "content": "Returns the list of flags with values, campaign, and variation associated.\nHas the same behavior as /campaigns endpoint but with a different response format.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environmentId",
+                "flags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "exposeAllKeys",
+                  "value": "true",
+                  "description": "If true, all flag keys (even flag keys with null values) will be returned"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environmentId",
+                  "description": "(Required) Identifies your account and environment (preprod or prod)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"visitor_id\": \"<string>\",\n  \"anonymous_id\": \"<string>\",\n  \"context\": {\n    \"key_0\": true,\n    \"key_1\": 3707.3222772176505,\n    \"key_2\": \"string\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "89e8f50f-14e6-4c50-911b-65db44ef9359",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "flags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "exposeAllKeys",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"feature_new_checkout\": {\n    \"value\": true,\n    \"metadata\": {\n      \"campaignId\": \"campaign_abc\",\n      \"campaignName\": \"New Checkout Experiment\",\n      \"slug\": null,\n      \"type\": \"ab\",\n      \"variationGroupId\": \"vg_123\",\n      \"variationGroupName\": \"Variation Group A\",\n      \"variationId\": \"var_456\",\n      \"variationName\": \"Treatment\",\n      \"reference\": false\n    }\n  },\n  \"button_color\": {\n    \"value\": \"blue\",\n    \"metadata\": {\n      \"campaignId\": \"campaign_def\",\n      \"campaignName\": \"Button Color Test\",\n      \"slug\": \"button-test\",\n      \"type\": \"ab\",\n      \"variationGroupId\": \"vg_789\",\n      \"variationGroupName\": \"Color Variants\",\n      \"variationId\": \"var_012\",\n      \"variationName\": \"Blue Variant\",\n      \"reference\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec38e66b-42d2-44f5-94f8-58d83288e196",
+              "name": "Authentication information is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "flags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "exposeAllKeys",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invalid API key\",\n  \"code\": \"UNAUTHORIZED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7083cdc6-d3da-445c-8282-7b4eae2f2b6a",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "flags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "exposeAllKeys",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Rate limit exceeded. Maximum 200 req/s with burst of 600 req/s\",\n  \"code\": \"RATE_LIMIT_EXCEEDED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "22b9a522-0b0f-4b8c-b744-4c7e59adce66",
+      "name": "Flags",
+      "description": {
+        "content": "Feature flag operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "be8d97d6-a558-4586-be15-c17b701207e4",
+          "name": "AB Tasty Post Environment Flags",
+          "request": {
+            "name": "AB Tasty Post Environment Flags",
+            "description": {
+              "content": "Returns the list of flags with values, campaign, and variation associated.\nHas the same behavior as /campaigns endpoint but with a different response format.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environmentId",
+                "flags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "exposeAllKeys",
+                  "value": "true",
+                  "description": "If true, all flag keys (even flag keys with null values) will be returned"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environmentId",
+                  "description": "(Required) Identifies your account and environment (preprod or prod)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"visitor_id\": \"<string>\",\n  \"anonymous_id\": \"<string>\",\n  \"context\": {\n    \"key_0\": true,\n    \"key_1\": 3707.3222772176505,\n    \"key_2\": \"string\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "373bc694-5e71-45ae-a28a-45b1e28c70de",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "flags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "exposeAllKeys",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"feature_new_checkout\": {\n    \"value\": true,\n    \"metadata\": {\n      \"campaignId\": \"campaign_abc\",\n      \"campaignName\": \"New Checkout Experiment\",\n      \"slug\": null,\n      \"type\": \"ab\",\n      \"variationGroupId\": \"vg_123\",\n      \"variationGroupName\": \"Variation Group A\",\n      \"variationId\": \"var_456\",\n      \"variationName\": \"Treatment\",\n      \"reference\": false\n    }\n  },\n  \"button_color\": {\n    \"value\": \"blue\",\n    \"metadata\": {\n      \"campaignId\": \"campaign_def\",\n      \"campaignName\": \"Button Color Test\",\n      \"slug\": \"button-test\",\n      \"type\": \"ab\",\n      \"variationGroupId\": \"vg_789\",\n      \"variationGroupName\": \"Color Variants\",\n      \"variationId\": \"var_012\",\n      \"variationName\": \"Blue Variant\",\n      \"reference\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8ff136b-438b-439b-aa28-c0906e4dd0c9",
+              "name": "Authentication information is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "flags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "exposeAllKeys",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invalid API key\",\n  \"code\": \"UNAUTHORIZED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2fc20494-32b2-4f99-b1c7-e76e3bf70e8b",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "flags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "exposeAllKeys",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Rate limit exceeded. Maximum 200 req/s with burst of 600 req/s\",\n  \"code\": \"RATE_LIMIT_EXCEEDED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "133cad60-af0d-48b2-8c9c-32dd6d54997d",
+      "name": "Post",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fecdb962-c4cc-4459-b536-5d00f6ac7e0c",
+          "name": "AB Tasty Post Environment Campaigns",
+          "request": {
+            "name": "AB Tasty Post Environment Campaigns",
+            "description": {
+              "content": "Retrieves all the campaigns that correspond to the specified user and context attributes.\nBy default, the API will send a CAMPAIGN hit to Flagship for each campaign in the response.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environmentId",
+                "campaigns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "normal",
+                  "description": "Specifies the format of the response body"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environmentId",
+                  "description": "(Required) Identifies your account and environment (preprod or prod)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"visitor_id\": \"<string>\",\n  \"anonymous_id\": \"<string>\",\n  \"context\": {\n    \"key_0\": true,\n    \"key_1\": 3707.3222772176505,\n    \"key_2\": \"string\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d0fe7d4e-f479-4f16-83dc-6e75b344c68d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "normal"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\"\n  },\n  \"visitor_consent\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"visitorId\": \"user123\",\n  \"campaigns\": [\n    {\n      \"id\": \"campaign_abc\",\n      \"variationGroupId\": \"vg_123\",\n      \"variation\": {\n        \"id\": \"var_456\",\n        \"modifications\": {\n          \"type\": \"JSON\",\n          \"value\": {\n            \"button_color\": \"blue\",\n            \"feature_enabled\": true\n          }\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6532bafb-6ed4-41a3-a310-f094e3015830",
+              "name": "Authentication information is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "normal"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\"\n  },\n  \"visitor_consent\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invalid API key\",\n  \"code\": \"UNAUTHORIZED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5bc7381-d7c7-4e75-9351-c4085768cd64",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "normal"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\"\n  },\n  \"visitor_consent\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Rate limit exceeded. Maximum 200 req/s with burst of 600 req/s\",\n  \"code\": \"RATE_LIMIT_EXCEEDED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7aba401-56ba-45c5-a52c-3d4a410d7009",
+          "name": "AB Tasty Post Environment Campaigns",
+          "request": {
+            "name": "AB Tasty Post Environment Campaigns",
+            "description": {
+              "content": "Retrieves the assignment of your visitor ID with a specific context to the specified campaign ID.\nBy default, the API will send a CAMPAIGN hit to Flagship.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environmentId",
+                "campaigns",
+                ":campaignId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environmentId",
+                  "description": "(Required) Identifies your account and environment (preprod or prod)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaignId",
+                  "description": "(Required) Campaign ID or slug"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"visitor_id\": \"<string>\",\n  \"anonymous_id\": \"<string>\",\n  \"context\": {\n    \"key_0\": \"string\",\n    \"key_1\": 1264.7287361092397\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"<string>\",\n  \"format_response\": false,\n  \"default_redirect_url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "17677698-e3f9-40b7-ae79-a96cae596278",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID or slug"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\",\n  \"format_response\": false,\n  \"default_redirect_url\": \"https://example.com/default\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"campaign_abc\",\n  \"variationGroupId\": \"vg_123\",\n  \"variation\": {\n    \"id\": \"var_456\",\n    \"modifications\": {\n      \"type\": \"JSON\",\n      \"value\": {\n        \"button_color\": \"blue\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03e29ee5-3def-4f7f-877f-64d5bc2e589f",
+              "name": "Redirect response (when default_redirect_url is specified)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID or slug"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\",\n  \"format_response\": false,\n  \"default_redirect_url\": \"https://example.com/default\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Redirect URL",
+                  "key": "Location",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d0c2e549-f39f-48fd-85b0-2d1ffc62d8c3",
+              "name": "Authentication information is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID or slug"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\",\n  \"format_response\": false,\n  \"default_redirect_url\": \"https://example.com/default\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invalid API key\",\n  \"code\": \"UNAUTHORIZED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b696f47e-3553-4144-b732-0b25b6f6da3d",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID or slug"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\",\n  \"format_response\": false,\n  \"default_redirect_url\": \"https://example.com/default\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Rate limit exceeded. Maximum 200 req/s with burst of 600 req/s\",\n  \"code\": \"RATE_LIMIT_EXCEEDED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ca5c6fa-8f1d-427e-86f3-7f06b56f2acc",
+          "name": "AB Tasty Post Environment Flags",
+          "request": {
+            "name": "AB Tasty Post Environment Flags",
+            "description": {
+              "content": "Returns the list of flags with values, campaign, and variation associated.\nHas the same behavior as /campaigns endpoint but with a different response format.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environmentId",
+                "flags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "exposeAllKeys",
+                  "value": "true",
+                  "description": "If true, all flag keys (even flag keys with null values) will be returned"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environmentId",
+                  "description": "(Required) Identifies your account and environment (preprod or prod)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"visitor_id\": \"<string>\",\n  \"anonymous_id\": \"<string>\",\n  \"context\": {\n    \"key_0\": true,\n    \"key_1\": 3707.3222772176505,\n    \"key_2\": \"string\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cd4f13a8-4f1b-49da-aca1-8dee6650cc0e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "flags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "exposeAllKeys",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"feature_new_checkout\": {\n    \"value\": true,\n    \"metadata\": {\n      \"campaignId\": \"campaign_abc\",\n      \"campaignName\": \"New Checkout Experiment\",\n      \"slug\": null,\n      \"type\": \"ab\",\n      \"variationGroupId\": \"vg_123\",\n      \"variationGroupName\": \"Variation Group A\",\n      \"variationId\": \"var_456\",\n      \"variationName\": \"Treatment\",\n      \"reference\": false\n    }\n  },\n  \"button_color\": {\n    \"value\": \"blue\",\n    \"metadata\": {\n      \"campaignId\": \"campaign_def\",\n      \"campaignName\": \"Button Color Test\",\n      \"slug\": \"button-test\",\n      \"type\": \"ab\",\n      \"variationGroupId\": \"vg_789\",\n      \"variationGroupName\": \"Color Variants\",\n      \"variationId\": \"var_012\",\n      \"variationName\": \"Blue Variant\",\n      \"reference\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7a551db-98d2-45c2-b6af-153dffdfcbea",
+              "name": "Authentication information is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "flags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "exposeAllKeys",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invalid API key\",\n  \"code\": \"UNAUTHORIZED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bade773a-9e3e-404e-a405-b1c420d54506",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environmentId",
+                    "flags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "exposeAllKeys",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environmentId",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"user123\",\n  \"anonymous_id\": \"session_xyz\",\n  \"context\": {\n    \"device\": \"mobile\",\n    \"platform\": \"ios\",\n    \"subscription_level\": \"premium\"\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"VIP_users\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Rate limit exceeded. Maximum 200 req/s with burst of 600 req/s\",\n  \"code\": \"RATE_LIMIT_EXCEEDED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0df3f393-c67f-49e9-8ccc-dc7cc7647d48",
+          "name": "AB Tasty Post Activate",
+          "request": {
+            "name": "AB Tasty Post Activate",
+            "description": {
+              "content": "Assigns a user to a variation. Should be used to manually activate a single campaign and variation\nin cases where you choose not to activate them automatically (when trigger_hit is false).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vid\": \"<string>\",\n  \"cid\": \"<string>\",\n  \"caid\": \"<string>\",\n  \"vaid\": \"<string>\",\n  \"aid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1bbc1d0d-c5a3-4ad2-93f1-e3ce84d9aaea",
+              "name": "No Content - Activation successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vid\": \"user123\",\n  \"cid\": \"env_abc\",\n  \"caid\": \"vg_123\",\n  \"vaid\": \"var_456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e279c04b-1b85-4dd4-acc7-67de14e08a34",
+              "name": "Authentication information is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vid\": \"user123\",\n  \"cid\": \"env_abc\",\n  \"caid\": \"vg_123\",\n  \"vaid\": \"var_456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invalid API key\",\n  \"code\": \"UNAUTHORIZED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://decision.flagship.io/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dc183885-6067-46c1-81cc-431ee299ce9d",
+    "name": "AB Tasty Decision API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AB Tasty Decision API is a server-side service that evaluates a visitors context against your active experiments, personalizations, and feature flags, then returns a deterministic decision which campaigns the user qualifies for, the selected variation, and any variables or content to render. It centralizes targeting, traffic allocation, and bucketing so you can power A/B tests, gradual rollouts, and personalized experiences from backends, mobile apps, or edge workers while keeping user exposure consistent. You pass identifiers and attributes at request time, use the response to render the experience, and pair it with event tracking for measurement...\n\nContact Support:\n Name: Flagship Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AB Tasty Decision API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Campaigns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AB Tasty Post Environment Campaigns",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://decision.flagship.io/v2/:environmentId/campaigns",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "env_abc123",
+                "type": "path",
+                "description": "Identifies your account and environment (preprod or prod)"
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the format of the response body"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves all the campaigns that correspond to the specified user and context attributes.\nBy default, the API will send a CAMPAIGN hit to Flagship for each campaign in the response.\n"
+        },
+        {
+          "info": {
+            "name": "AB Tasty Post Environment Campaigns",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://decision.flagship.io/v2/:environmentId/campaigns/:campaignId",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "env_abc123",
+                "type": "path",
+                "description": "Identifies your account and environment (preprod or prod)"
+              },
+              {
+                "name": "campaignId",
+                "value": "campaign_abc",
+                "type": "path",
+                "description": "Campaign ID or slug"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves the assignment of your visitor ID with a specific context to the specified campaign ID.\nBy default, the API will send a CAMPAIGN hit to Flagship.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Environments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AB Tasty Post Environment Flags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://decision.flagship.io/v2/:environmentId/flags",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "env_abc123",
+                "type": "path",
+                "description": "Identifies your account and environment (preprod or prod)"
+              },
+              {
+                "name": "exposeAllKeys",
+                "value": "",
+                "type": "query",
+                "description": "If true, all flag keys (even flag keys with null values) will be returned"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the list of flags with values, campaign, and variation associated.\nHas the same behavior as /campaigns endpoint but with a different response format.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Activate",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AB Tasty Post Activate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://decision.flagship.io/v2/activate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Assigns a user to a variation. Should be used to manually activate a single campaign and variation\nin cases where you choose not to activate them automatically (when trigger_hit is false).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
