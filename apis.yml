@@ -62,37 +62,37 @@ apis:
         type: JSONSchema
         title: Single Campaign Request
       - url: https://github.com/flagship-io/flagship-ts-sdk
-        type: SDK
+        type: SDKs
         title: TypeScript SDK
       - url: https://github.com/flagship-io/flagship-react-sdk
-        type: SDK
+        type: SDKs
         title: React SDK
       - url: https://github.com/flagship-io/flagship-react-native-sdk
-        type: SDK
+        type: SDKs
         title: React Native SDK
       - url: https://github.com/flagship-io/flagship-flutter-sdk
-        type: SDK
+        type: SDKs
         title: Flutter SDK
       - url: https://github.com/flagship-io/flagship-php-sdk
-        type: SDK
+        type: SDKs
         title: PHP SDK
       - url: https://github.com/flagship-io/flagship-dotnet-sdk
-        type: SDK
+        type: SDKs
         title: .NET SDK
       - url: https://github.com/flagship-io/flagship-android
-        type: SDK
+        type: SDKs
         title: Android SDK
       - url: https://github.com/flagship-io/flagship-ios
-        type: SDK
+        type: SDKs
         title: iOS SDK
       - url: https://github.com/flagship-io/flagship-python-sdk
-        type: SDK
+        type: SDKs
         title: Python SDK
       - url: https://github.com/flagship-io/flagship-java
-        type: SDK
+        type: SDKs
         title: Java SDK
       - url: https://github.com/flagship-io/flagship-go-sdk
-        type: SDK
+        type: SDKs
         title: Go SDK
       - url: https://github.com/flagship-io/code-samples
         type: CodeExamples
@@ -244,7 +244,7 @@ common:
         description: Akamai worker integration for CDN-level feature experimentation
       - name: Shopify Hydrogen
         description: Shopify Hydrogen framework integration for headless commerce experimentation
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://docs.abtasty.com/llms.txt
 created: '2025-06-05'
 modified: '2026-05-19'
