@@ -147,6 +147,10 @@ kind: contract
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
+  - type: DomainSecurity
+    url: security/ab-tasty-domain-security.yml
+  - type: Authentication
+    url: authentication/ab-tasty-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/ab-tasty
   - url: https://www.abtasty.com/
@@ -183,6 +187,8 @@ common:
   - url: https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/rules/ab-tasty-spectral-rules.yml
     name: AB Tasty Spectral Rules
     type: SpectralRules
+  - url: https://www.abtasty.com/feed/
+    type: Blog
   - url: https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/vocabulary/ab-tasty-vocabulary.yaml
     name: AB Tasty Vocabulary
     type: Vocabulary
