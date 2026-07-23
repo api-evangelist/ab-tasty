@@ -1,0 +1,165 @@
+openapi: 3.1.0
+info:
+  title: AB Tasty Decision Activate API
+  version: 2.0.0
+  description: The AB Tasty Decision API is a server-side service that evaluates a visitors context against your active experiments, personalizations, and feature flags, then returns a deterministic decision which campaigns the user qualifies for, the selected variation, and any variables or content to render. It centralizes targeting, traffic allocation, and bucketing so you can power A/B tests, gradual rollouts, and personalized experiences from backends, mobile apps, or edge workers while keeping user exposure consistent. You pass identifiers and attributes at request time, use the response to render the experience, and pair it with event tracking for measurement...
+  contact:
+    name: Flagship Support
+    url: https://www.flagship.io
+servers:
+- url: https://decision.flagship.io/v2
+  description: Production server
+security:
+- ApiKeyAuth: []
+tags:
+- name: Activate
+paths:
+  /activate:
+    post:
+      tags:
+      - Activate
+      summary: AB Tasty Post Activate
+      description: 'Assigns a user to a variation. Should be used to manually activate a single campaign and variation
+
+        in cases where you choose not to activate them automatically (when trigger_hit is false).
+
+        '
+      operationId: postActivate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/ActivationRequest'
+              - $ref: '#/components/schemas/BatchActivationRequest'
+            examples:
+              single:
+                summary: Single activation
+                value:
+                  vid: user123
+                  cid: env_abc
+                  caid: vg_123
+                  vaid: var_456
+              singleWithAnonymous:
+                summary: Single activation with anonymous ID
+                value:
+                  vid: user123
+                  aid: session_xyz
+                  cid: env_abc
+                  caid: vg_123
+                  vaid: var_456
+              batch:
+                summary: Batch activation
+                value:
+                  cid: env_abc
+                  batch:
+                  - vid: user123
+                    caid: vg_123
+                    vaid: var_456
+                  - vid: user456
+                    caid: vg_789
+                    vaid: var_012
+                    qt: 2134
+      responses:
+        '204':
+          description: No Content - Activation successful
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    UnauthorizedError:
+      description: Authentication information is missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Invalid API key
+            code: UNAUTHORIZED
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+    BatchActivationRequest:
+      type: object
+      required:
+      - cid
+      - batch
+      properties:
+        cid:
+          type: string
+          description: Environment ID
+          example: env_abc
+        batch:
+          type: array
+          items:
+            $ref: '#/components/schemas/BatchActivationItem'
+          minItems: 1
+    BatchActivationItem:
+      type: object
+      required:
+      - vid
+      - caid
+      - vaid
+      properties:
+        vid:
+          type: string
+          description: Visitor ID
+          example: user123
+        caid:
+          type: string
+          description: Variation group ID
+          example: vg_123
+        vaid:
+          type: string
+          description: Variation ID
+          example: var_456
+        qt:
+          type: integer
+          description: Time delta in milliseconds for offline/latent hits (0-4 hours)
+          minimum: 0
+          example: 2134
+    ActivationRequest:
+      type: object
+      required:
+      - vid
+      - cid
+      - caid
+      - vaid
+      properties:
+        vid:
+          type: string
+          description: Visitor ID
+          example: user123
+        aid:
+          type: string
+          description: Anonymous ID (for experience continuity)
+          example: session_xyz
+        cid:
+          type: string
+          description: Environment ID
+          example: env_abc
+        caid:
+          type: string
+          description: Variation group ID
+          example: vg_123
+        vaid:
+          type: string
+          description: Variation ID
+          example: var_456
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key for authentication. Can be found in Flagship Platform under Parameters / Environment & Security
