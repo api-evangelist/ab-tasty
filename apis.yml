@@ -1,141 +1,406 @@
 aid: ab-tasty
 url: https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/apis.yml
 apis:
-  - aid: ab-tasty:ab-tasty-decision-api
-    name: AB Tasty Decision API
-    humanURL: https://docs.abtasty.com/server-side/decision-api/decision-api
-    properties:
-      - url: https://docs.abtasty.com/server-side/decision-api/decision-api
-        type: Documentation
-      - url: https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/openapi/decision-api-openapi.yml
-        type: OpenAPI
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-request-schema.json
-        type: JSONSchema
-        title: Campaign Request
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-schema.json
-        type: JSONSchema
-        title: Campaign
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flag-schema.json
-        type: JSONSchema
-        title: Flag
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flags-response-schema.json
-        type: JSONSchema
-        title: Flags Response
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-activation-request-schema.json
-        type: JSONSchema
-        title: Activation Request
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flag-metadata-schema.json
-        type: JSONSchema
-        title: Flag Metadata
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-normal-schema.json
-        type: JSONSchema
-        title: Campaign Response Normal
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-simple-schema.json
-        type: JSONSchema
-        title: Campaign Response Simple
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-full-schema.json
-        type: JSONSchema
-        title: Campaign Response Full
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-batch-activation-request-schema.json
-        type: JSONSchema
-        title: Batch Activation Request
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-batch-activation-item-schema.json
-        type: JSONSchema
-        title: Batch Activation Item
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-variation-schema.json
-        type: JSONSchema
-        title: Campaign Variation
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-single-campaign-request-schema.json
-        type: JSONSchema
-        title: Single Campaign Request
-      - url: https://github.com/flagship-io/flagship-ts-sdk
-        type: SDKs
-        title: TypeScript SDK
-      - url: https://github.com/flagship-io/flagship-react-sdk
-        type: SDKs
-        title: React SDK
-      - url: https://github.com/flagship-io/flagship-react-native-sdk
-        type: SDKs
-        title: React Native SDK
-      - url: https://github.com/flagship-io/flagship-flutter-sdk
-        type: SDKs
-        title: Flutter SDK
-      - url: https://github.com/flagship-io/flagship-php-sdk
-        type: SDKs
-        title: PHP SDK
-      - url: https://github.com/flagship-io/flagship-dotnet-sdk
-        type: SDKs
-        title: .NET SDK
-      - url: https://github.com/flagship-io/flagship-android
-        type: SDKs
-        title: Android SDK
-      - url: https://github.com/flagship-io/flagship-ios
-        type: SDKs
-        title: iOS SDK
-      - url: https://github.com/flagship-io/flagship-python-sdk
-        type: SDKs
-        title: Python SDK
-      - url: https://github.com/flagship-io/flagship-java
-        type: SDKs
-        title: Java SDK
-      - url: https://github.com/flagship-io/flagship-go-sdk
-        type: SDKs
-        title: Go SDK
-      - url: https://github.com/flagship-io/code-samples
-        type: CodeExamples
-        title: Code Samples
-    tags:
-      - Decision
-      - Experimentation
-      - Feature Flags
-      - Server Side
-    description: >-
-      The AB Tasty Decision API is a server-side service that evaluates a visitors context against your active
-      experiments, personalizations, and feature flags, then returns a deterministic decision: which campaigns the user
-      qualifies for, the selected variation, and any variables or content to render.
-  - aid: ab-tasty:ab-tasty-remote-control-api
-    name: AB Tasty Remote Control API
-    humanURL: https://docs.abtasty.com/server-side/remote-control-api
-    properties:
-      - url: https://docs.abtasty.com/server-side/remote-control-api
-        type: Documentation
-    tags:
-      - Remote Control
-      - Campaigns
-      - Experimentation
-    description: >-
-      AB Tastys Remote Control API is a developer and QA tool that lets you programmatically drive the AB Tasty SDK from
-      outside your app or page, so you can precisely control and observe experiments without changing production
-      targeting. With it, you can preview or force specific campaigns and variations for a visitor, toggle or pause
-      experiences, set visitor/context attributes, trigger goals and custom events, refresh decisions, and clear caches
-      to reproduce clean states.
-  - aid: ab-tasty:ab-tasty-public-api
-    name: AB Tasty Public API
-    humanURL: https://docs.abtasty.com/integrations/custom-integrations/ab-tasty-public-api
-    properties:
-      - url: https://docs.abtasty.com/integrations/custom-integrations/ab-tasty-public-api
-        type: Documentation
-    tags:
-      - Campaigns
-      - Integrations
-      - Management
-    description: >-
-      The AB Tasty Public API provides programmatic access to manage campaigns, monitor and control experiments, manage
-      account users, and integrate AB Tasty with third-party tools. It uses OAuth-style credentials (ClientID and
-      ClientSecret) to generate access tokens for authentication.
+- aid: ab-tasty:ab-tasty-remote-control-api
+  name: AB Tasty Remote Control API
+  humanURL: https://docs.abtasty.com/server-side/remote-control-api
+  properties:
+  - url: https://docs.abtasty.com/server-side/remote-control-api
+    type: Documentation
+  tags:
+  - Remote Control
+  - Campaigns
+  - Experimentation
+  description: >-
+    AB Tastys Remote Control API is a developer and QA tool that lets you programmatically drive the AB
+    Tasty SDK from outside your app or page, so you can precisely control and observe experiments without
+    changing production targeting. With it, you can preview or force specific campaigns and variations
+    for a visitor, toggle or pause experiences, set visitor/context attributes, trigger goals and custom
+    events, refresh decisions, and clear caches to reproduce clean states.
+- aid: ab-tasty:ab-tasty-public-api
+  name: AB Tasty Public API
+  humanURL: https://docs.abtasty.com/integrations/custom-integrations/ab-tasty-public-api
+  properties:
+  - url: https://docs.abtasty.com/integrations/custom-integrations/ab-tasty-public-api
+    type: Documentation
+  tags:
+  - Campaigns
+  - Integrations
+  - Management
+  description: >-
+    The AB Tasty Public API provides programmatic access to manage campaigns, monitor and control experiments,
+    manage account users, and integrate AB Tasty with third-party tools. It uses OAuth-style credentials
+    (ClientID and ClientSecret) to generate access tokens for authentication.
+- aid: ab-tasty:ab-tasty-activate-api
+  name: AB Tasty Activate API
+  description: The Activate API from AB Tasty — 1 operation(s) for activate.
+  humanURL: https://docs.abtasty.com/server-side/decision-api/decision-api
+  tags:
+  - Activate
+  properties:
+  - type: OpenAPI
+    url: openapi/ab-tasty-activate-api-openapi.yml
+  - type: Documentation
+    url: https://docs.abtasty.com/server-side/decision-api/decision-api
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flag-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flags-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-activation-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flag-metadata-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-normal-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-simple-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-full-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-batch-activation-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-batch-activation-item-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-variation-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-single-campaign-request-schema.json
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-ts-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-react-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-react-native-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-flutter-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-php-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-dotnet-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-android
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-ios
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-python-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-java
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-go-sdk
+  - type: CodeExamples
+    url: https://github.com/flagship-io/code-samples
+- aid: ab-tasty:ab-tasty-campaigns-api
+  name: AB Tasty Campaigns API
+  description: Campaign assignment operations
+  humanURL: https://docs.abtasty.com/server-side/decision-api/decision-api
+  tags:
+  - Campaigns
+  properties:
+  - type: OpenAPI
+    url: openapi/ab-tasty-campaigns-api-openapi.yml
+  - type: Documentation
+    url: https://docs.abtasty.com/server-side/decision-api/decision-api
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flag-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flags-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-activation-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flag-metadata-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-normal-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-simple-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-full-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-batch-activation-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-batch-activation-item-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-variation-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-single-campaign-request-schema.json
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-ts-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-react-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-react-native-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-flutter-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-php-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-dotnet-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-android
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-ios
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-python-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-java
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-go-sdk
+  - type: CodeExamples
+    url: https://github.com/flagship-io/code-samples
+- aid: ab-tasty:ab-tasty-environments-api
+  name: AB Tasty Environments API
+  description: The Environments API from AB Tasty — 3 operation(s) for environments.
+  humanURL: https://docs.abtasty.com/server-side/decision-api/decision-api
+  tags:
+  - Environments
+  properties:
+  - type: OpenAPI
+    url: openapi/ab-tasty-environments-api-openapi.yml
+  - type: Documentation
+    url: https://docs.abtasty.com/server-side/decision-api/decision-api
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flag-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flags-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-activation-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flag-metadata-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-normal-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-simple-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-full-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-batch-activation-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-batch-activation-item-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-variation-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-single-campaign-request-schema.json
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-ts-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-react-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-react-native-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-flutter-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-php-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-dotnet-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-android
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-ios
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-python-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-java
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-go-sdk
+  - type: CodeExamples
+    url: https://github.com/flagship-io/code-samples
+- aid: ab-tasty:ab-tasty-flags-api
+  name: AB Tasty Flags API
+  description: Feature flag operations
+  humanURL: https://docs.abtasty.com/server-side/decision-api/decision-api
+  tags:
+  - Flags
+  properties:
+  - type: OpenAPI
+    url: openapi/ab-tasty-flags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.abtasty.com/server-side/decision-api/decision-api
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flag-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flags-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-activation-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flag-metadata-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-normal-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-simple-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-full-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-batch-activation-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-batch-activation-item-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-variation-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-single-campaign-request-schema.json
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-ts-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-react-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-react-native-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-flutter-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-php-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-dotnet-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-android
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-ios
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-python-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-java
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-go-sdk
+  - type: CodeExamples
+    url: https://github.com/flagship-io/code-samples
+- aid: ab-tasty:ab-tasty-post-api
+  name: AB Tasty Post API
+  description: The Post API from AB Tasty — 4 operation(s) for post.
+  humanURL: https://docs.abtasty.com/server-side/decision-api/decision-api
+  tags:
+  - Post
+  properties:
+  - type: OpenAPI
+    url: openapi/ab-tasty-post-api-openapi.yml
+  - type: Documentation
+    url: https://docs.abtasty.com/server-side/decision-api/decision-api
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flag-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flags-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-activation-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flag-metadata-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-normal-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-simple-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-full-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-batch-activation-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-batch-activation-item-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-variation-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-single-campaign-request-schema.json
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-ts-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-react-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-react-native-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-flutter-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-php-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-dotnet-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-android
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-ios
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-python-sdk
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-java
+  - type: SDKs
+    url: https://github.com/flagship-io/flagship-go-sdk
+  - type: CodeExamples
+    url: https://github.com/flagship-io/code-samples
 name: AB Tasty
 tags:
   - Aggregation
@@ -144,9 +409,24 @@ tags:
   - Personalization
   - A/B Testing
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/ab-tasty.png
 access: 3rd-Party
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/ab-tasty/overview
   - type: AgenticAccess
     url: agentic-access/ab-tasty-agentic-access.yml
   - type: DomainSecurity
