@@ -1,0 +1,326 @@
+{
+  "info": {
+    "_postman_id": "110dbe2d-b4ea-4de5-8208-f0d4e254150c",
+    "name": "AB Tasty Decision Activate Flags API",
+    "description": "The AB Tasty Decision API is a server-side service that evaluates a visitors context against your active experiments, personalizations, and feature flags, then returns a deterministic decision which campaigns the user qualifies for, the selected variation, and any variables or content to render. It centralizes targeting, traffic allocation, and bucketing so you can power A/B tests, gradual rollouts, and personalized experiences from backends, mobile apps, or edge workers while keeping user exposure consistent. You pass identifiers and attributes at request time, use the response to render the experience, and pair it with event tracking for measurement...\n\nContact Support:\n Name: Flagship Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:27:32.000Z",
+    "updatedAt": "2026-07-28T00:27:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-110dbe2d-b4ea-4de5-8208-f0d4e254150c"
+  },
+  "item": [
+    {
+      "name": "{environmentId}",
+      "item": [
+        {
+          "name": "flags",
+          "item": [
+            {
+              "name": "AB Tasty Post Environment Flags",
+              "id": "7955a8da-9c94-496d-ab56-e2619d597b5c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitor_id\": \"<string>\",\n  \"anonymous_id\": \"<string>\",\n  \"context\": {\n    \"ex31\": false\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:environmentId/flags?exposeAllKeys=true",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":environmentId",
+                    "flags"
+                  ],
+                  "query": [
+                    {
+                      "description": "If true, all flag keys (even flag keys with null values) will be returned",
+                      "key": "exposeAllKeys",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "969d53fd-32ce-42f9-9fc5-c4599a9aedf5",
+                      "key": "environmentId",
+                      "value": "<string>",
+                      "description": "(Required) Identifies your account and environment (preprod or prod)"
+                    }
+                  ]
+                },
+                "description": "Returns the list of flags with values, campaign, and variation associated.\nHas the same behavior as /campaigns endpoint but with a different response format.\n"
+              },
+              "response": [
+                {
+                  "id": "eb840723-87d4-4b1f-bd27-8821578fcb84",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"visitor_id\": \"<string>\",\n  \"anonymous_id\": \"<string>\",\n  \"context\": {\n    \"ex31\": false\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:environmentId/flags?exposeAllKeys=true",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":environmentId",
+                        "flags"
+                      ],
+                      "query": [
+                        {
+                          "description": "If true, all flag keys (even flag keys with null values) will be returned",
+                          "key": "exposeAllKeys",
+                          "value": "true"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "environmentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"cillume7\": {\n    \"value\": {},\n    \"metadata\": {\n      \"campaignId\": \"<string>\",\n      \"campaignName\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"type\": \"<string>\",\n      \"variationGroupId\": \"<string>\",\n      \"variationGroupName\": \"<string>\",\n      \"variationId\": \"<string>\",\n      \"variationName\": \"<string>\",\n      \"reference\": \"<boolean>\"\n    }\n  },\n  \"dolor76\": {\n    \"value\": {},\n    \"metadata\": {\n      \"campaignId\": \"<string>\",\n      \"campaignName\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"type\": \"<string>\",\n      \"variationGroupId\": \"<string>\",\n      \"variationGroupName\": \"<string>\",\n      \"variationId\": \"<string>\",\n      \"variationName\": \"<string>\",\n      \"reference\": \"<boolean>\"\n    }\n  },\n  \"estb\": {\n    \"value\": {},\n    \"metadata\": {\n      \"campaignId\": \"<string>\",\n      \"campaignName\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"type\": \"<string>\",\n      \"variationGroupId\": \"<string>\",\n      \"variationGroupName\": \"<string>\",\n      \"variationId\": \"<string>\",\n      \"variationName\": \"<string>\",\n      \"reference\": \"<boolean>\"\n    }\n  },\n  \"sintc4a\": {\n    \"value\": {},\n    \"metadata\": {\n      \"campaignId\": \"<string>\",\n      \"campaignName\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"type\": \"<string>\",\n      \"variationGroupId\": \"<string>\",\n      \"variationGroupName\": \"<string>\",\n      \"variationId\": \"<string>\",\n      \"variationName\": \"<string>\",\n      \"reference\": \"<boolean>\"\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T00:27:33.000Z",
+                  "updatedAt": "2026-07-28T00:27:33.000Z",
+                  "uid": "35240-eb840723-87d4-4b1f-bd27-8821578fcb84"
+                },
+                {
+                  "id": "bc4df581-98ed-4cc1-916a-b9e200851968",
+                  "name": "Authentication information is missing or invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"visitor_id\": \"<string>\",\n  \"anonymous_id\": \"<string>\",\n  \"context\": {\n    \"ex31\": false\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:environmentId/flags?exposeAllKeys=true",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":environmentId",
+                        "flags"
+                      ],
+                      "query": [
+                        {
+                          "description": "If true, all flag keys (even flag keys with null values) will be returned",
+                          "key": "exposeAllKeys",
+                          "value": "true"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "environmentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:27:33.000Z",
+                  "updatedAt": "2026-07-28T00:27:33.000Z",
+                  "uid": "35240-bc4df581-98ed-4cc1-916a-b9e200851968"
+                },
+                {
+                  "id": "c72238fc-b007-4656-956a-7f93d5f09b8b",
+                  "name": "Rate limit exceeded",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"visitor_id\": \"<string>\",\n  \"anonymous_id\": \"<string>\",\n  \"context\": {\n    \"ex31\": false\n  },\n  \"visitor_consent\": true,\n  \"trigger_hit\": true,\n  \"decision_group\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:environmentId/flags?exposeAllKeys=true",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":environmentId",
+                        "flags"
+                      ],
+                      "query": [
+                        {
+                          "description": "If true, all flag keys (even flag keys with null values) will be returned",
+                          "key": "exposeAllKeys",
+                          "value": "true"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "environmentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:27:33.000Z",
+                  "updatedAt": "2026-07-28T00:27:33.000Z",
+                  "uid": "35240-c72238fc-b007-4656-956a-7f93d5f09b8b"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:33.000Z",
+              "updatedAt": "2026-07-28T00:27:33.000Z",
+              "uid": "35240-7955a8da-9c94-496d-ab56-e2619d597b5c"
+            }
+          ],
+          "id": "4ae02e0c-2996-4d05-b0be-2746f65282e7",
+          "createdAt": "2026-07-28T00:27:33.000Z",
+          "updatedAt": "2026-07-28T00:27:33.000Z",
+          "uid": "35240-4ae02e0c-2996-4d05-b0be-2746f65282e7"
+        }
+      ],
+      "id": "9f6d7e8d-bed1-4aa7-bd29-f0e4128132da",
+      "createdAt": "2026-07-28T00:27:33.000Z",
+      "updatedAt": "2026-07-28T00:27:33.000Z",
+      "uid": "35240-9f6d7e8d-bed1-4aa7-bd29-f0e4128132da"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://decision.flagship.io/v2"
+    }
+  ]
+}

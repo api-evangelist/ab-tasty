@@ -1,0 +1,22 @@
+{
+  "provider": "ab-tasty",
+  "sources": [
+    "ab-tasty-activate-api-openapi.yml",
+    "ab-tasty-campaigns-api-openapi.yml",
+    "ab-tasty-environments-api-openapi.yml",
+    "ab-tasty-flags-api-openapi.yml",
+    "ab-tasty-post-api-openapi.yml"
+  ],
+  "outputs": [
+    "ab-tasty-activate-api-openapi.yml",
+    "ab-tasty-campaigns-api-openapi.yml",
+    "ab-tasty-environments-api-openapi.yml",
+    "ab-tasty-flags-api-openapi.yml",
+    "ab-tasty-post-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
