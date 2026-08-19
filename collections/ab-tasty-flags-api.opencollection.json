@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AB Tasty Decision Activate Flags API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Flags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AB Tasty Post Environment Flags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://decision.flagship.io/v2/:environmentId/flags",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "env_abc123",
+                "type": "path",
+                "description": "Identifies your account and environment (preprod or prod)"
+              },
+              {
+                "name": "exposeAllKeys",
+                "value": "",
+                "type": "query",
+                "description": "If true, all flag keys (even flag keys with null values) will be returned"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the list of flags with values, campaign, and variation associated.\nHas the same behavior as /campaigns endpoint but with a different response format.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

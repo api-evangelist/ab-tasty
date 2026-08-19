@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AB Tasty Decision Activate API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Activate",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AB Tasty Post Activate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://decision.flagship.io/v2/activate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Assigns a user to a variation. Should be used to manually activate a single campaign and variation\nin cases where you choose not to activate them automatically (when trigger_hit is false).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
