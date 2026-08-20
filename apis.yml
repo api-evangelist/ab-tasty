@@ -25,6 +25,10 @@ apis:
     type: Documentation
   tags:
   - Campaigns
+  - Integration
+  - Management
+  tags_raw:
+  - Campaigns
   - Integrations
   - Management
   description: >-
@@ -331,7 +335,8 @@ apis:
   name: AB Tasty Post API
   description: The Post API from AB Tasty — 4 operation(s) for post.
   humanURL: https://docs.abtasty.com/server-side/decision-api/decision-api
-  tags:
+  tags: []
+  tags_raw:
   - Post
   properties:
   - type: OpenAPI
