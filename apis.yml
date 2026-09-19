@@ -1,5 +1,8 @@
 aid: ab-tasty
 url: https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/apis.yml
+x-docs-platform: gitbook
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-09-17
 apis:
 - aid: ab-tasty:ab-tasty-remote-control-api
   name: AB Tasty Remote Control API
@@ -188,6 +191,8 @@ apis:
   description: The Environments API from AB Tasty — 3 operation(s) for environments.
   humanURL: https://docs.abtasty.com/server-side/decision-api/decision-api
   tags:
+  - Environment
+  tags_raw:
   - Environments
   properties:
   - type: OpenAPI
