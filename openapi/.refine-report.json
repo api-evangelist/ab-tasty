@@ -1,22 +1,25 @@
 {
   "provider": "ab-tasty",
   "sources": [
-    "ab-tasty-activate-api-openapi.yml",
-    "ab-tasty-campaigns-api-openapi.yml",
-    "ab-tasty-environments-api-openapi.yml",
-    "ab-tasty-flags-api-openapi.yml",
-    "ab-tasty-post-api-openapi.yml"
+    "_original/decision-api-openapi.yml"
   ],
   "outputs": [
     "ab-tasty-activate-api-openapi.yml",
     "ab-tasty-campaigns-api-openapi.yml",
-    "ab-tasty-environments-api-openapi.yml",
-    "ab-tasty-flags-api-openapi.yml",
-    "ab-tasty-post-api-openapi.yml"
+    "ab-tasty-environments-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "decision-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "decision-api-openapi.yml: multi-axis tagging (5 tags, 3 first tags, 2.75x duplication over 4 operations) \u2014 split on first tag, 4 operations narrowed",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "ab-tasty-activate-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ab-tasty-campaigns-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ab-tasty-environments-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
