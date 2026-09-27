@@ -141,6 +141,95 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+    SingleCampaignRequest:
+      allOf:
+      - $ref: '#/components/schemas/CampaignRequest'
+      - type: object
+        properties:
+          format_response:
+            type: boolean
+            description: If true, response will be formatted according to modification type
+            default: false
+          default_redirect_url:
+            type: string
+            description: Default URL for 302 redirect if no modification redirection is defined
+            example: https://example.com/default
+    Campaign:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Campaign ID
+          example: campaign_abc
+        variationGroupId:
+          type: string
+          description: Variation group ID (corresponds to a scenario in Flagship)
+          example: vg_123
+        variation:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Variation ID
+              example: var_456
+            modifications:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                  - 'NULL'
+                  - JSON
+                  - TEXT
+                  - IMAGE
+                  - HTML
+                  - FLAG
+                  - REDIRECT
+                  description: The modification type
+                value:
+                  oneOf:
+                  - type: object
+                  - type: string
+                  description: The value of the modification (structure depends on type)
+                  example:
+                    button_color: blue
+                    feature_enabled: true
+    CampaignResponseFull:
+      type: object
+      properties:
+        visitorId:
+          type: string
+          example: user123
+        campaigns:
+          type: array
+          items:
+            $ref: '#/components/schemas/Campaign'
+        campaignsVariation:
+          type: array
+          items:
+            $ref: '#/components/schemas/CampaignVariation'
+        mergedModifications:
+          type: object
+          additionalProperties: true
+    CampaignResponseNormal:
+      type: object
+      properties:
+        visitorId:
+          type: string
+          example: user123
+        campaigns:
+          type: array
+          items:
+            $ref: '#/components/schemas/Campaign'
     CampaignVariation:
       type: object
       properties:
@@ -184,63 +273,6 @@ components:
           nullable: true
           description: Groups visitors to receive the same variation assignment
           example: VIP_users
-    CampaignResponseFull:
-      type: object
-      properties:
-        visitorId:
-          type: string
-          example: user123
-        campaigns:
-          type: array
-          items:
-            $ref: '#/components/schemas/Campaign'
-        campaignsVariation:
-          type: array
-          items:
-            $ref: '#/components/schemas/CampaignVariation'
-        mergedModifications:
-          type: object
-          additionalProperties: true
-    Campaign:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Campaign ID
-          example: campaign_abc
-        variationGroupId:
-          type: string
-          description: Variation group ID (corresponds to a scenario in Flagship)
-          example: vg_123
-        variation:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Variation ID
-              example: var_456
-            modifications:
-              type: object
-              properties:
-                type:
-                  type: string
-                  enum:
-                  - 'NULL'
-                  - JSON
-                  - TEXT
-                  - IMAGE
-                  - HTML
-                  - FLAG
-                  - REDIRECT
-                  description: The modification type
-                value:
-                  oneOf:
-                  - type: object
-                  - type: string
-                  description: The value of the modification (structure depends on type)
-                  example:
-                    button_color: blue
-                    feature_enabled: true
     CampaignResponseSimple:
       type: object
       properties:
@@ -256,39 +288,23 @@ components:
             button_color: blue
             feature_enabled: true
             welcome_text: Hello!
-    CampaignResponseNormal:
-      type: object
-      properties:
-        visitorId:
-          type: string
-          example: user123
-        campaigns:
-          type: array
-          items:
-            $ref: '#/components/schemas/Campaign'
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: string
-          description: Error code
-    SingleCampaignRequest:
-      allOf:
-      - $ref: '#/components/schemas/CampaignRequest'
-      - type: object
-        properties:
-          format_response:
-            type: boolean
-            description: If true, response will be formatted according to modification type
-            default: false
-          default_redirect_url:
-            type: string
-            description: Default URL for 302 redirect if no modification redirection is defined
-            example: https://example.com/default
   parameters:
+    EnvironmentId:
+      name: environmentId
+      in: path
+      required: true
+      description: Identifies your account and environment (preprod or prod)
+      schema:
+        type: string
+      example: env_abc123
+    CampaignId:
+      name: campaignId
+      in: path
+      required: true
+      description: Campaign ID or slug
+      schema:
+        type: string
+      example: campaign_abc
     Mode:
       name: mode
       in: query
@@ -301,32 +317,7 @@ components:
         - simple
         - full
         default: normal
-    CampaignId:
-      name: campaignId
-      in: path
-      required: true
-      description: Campaign ID or slug
-      schema:
-        type: string
-      example: campaign_abc
-    EnvironmentId:
-      name: environmentId
-      in: path
-      required: true
-      description: Identifies your account and environment (preprod or prod)
-      schema:
-        type: string
-      example: env_abc123
   responses:
-    UnauthorizedError:
-      description: Authentication information is missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            message: Invalid API key
-            code: UNAUTHORIZED
     RateLimitError:
       description: Rate limit exceeded
       content:
@@ -336,6 +327,15 @@ components:
           example:
             message: Rate limit exceeded. Maximum 200 req/s with burst of 600 req/s
             code: RATE_LIMIT_EXCEEDED
+    UnauthorizedError:
+      description: Authentication information is missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Invalid API key
+            code: UNAUTHORIZED
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -69,30 +69,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    BatchActivationItem:
-      type: object
-      required:
-      - vid
-      - caid
-      - vaid
-      properties:
-        vid:
-          type: string
-          description: Visitor ID
-          example: user123
-        caid:
-          type: string
-          description: Variation group ID
-          example: vg_123
-        vaid:
-          type: string
-          description: Variation ID
-          example: var_456
-        qt:
-          type: integer
-          description: Time delta in milliseconds for offline/latent hits (0-4 hours)
-          minimum: 0
-          example: 2134
     Error:
       type: object
       properties:
@@ -117,6 +93,30 @@ components:
           items:
             $ref: '#/components/schemas/BatchActivationItem'
           minItems: 1
+    BatchActivationItem:
+      type: object
+      required:
+      - vid
+      - caid
+      - vaid
+      properties:
+        vid:
+          type: string
+          description: Visitor ID
+          example: user123
+        caid:
+          type: string
+          description: Variation group ID
+          example: vg_123
+        vaid:
+          type: string
+          description: Variation ID
+          example: var_456
+        qt:
+          type: integer
+          description: Time delta in milliseconds for offline/latent hits (0-4 hours)
+          minimum: 0
+          example: 2134
     ActivationRequest:
       type: object
       required:

@@ -79,6 +79,66 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+    FlagsResponse:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/Flag'
+      description: Object with flag keys as properties
+    CampaignRequest:
+      type: object
+      required:
+      - visitor_id
+      properties:
+        visitor_id:
+          type: string
+          description: Unique identifier for the application user or website visitor
+          example: user123
+        anonymous_id:
+          type: string
+          description: Identifier for anonymous visitors (e.g., session ID)
+          example: session_xyz
+        context:
+          type: object
+          description: JSON object of key-value pairs describing the user and device context
+          additionalProperties: true
+          example:
+            device: mobile
+            platform: ios
+            subscription_level: premium
+        visitor_consent:
+          type: boolean
+          description: Determines if visitor has consented to GDPR rules
+          default: true
+        trigger_hit:
+          type: boolean
+          description: Determines whether a CAMPAIGN hit should be automatically sent
+          default: true
+        decision_group:
+          type: string
+          nullable: true
+          description: Groups visitors to receive the same variation assignment
+          example: VIP_users
+    Flag:
+      type: object
+      properties:
+        value:
+          oneOf:
+          - type: object
+          - type: string
+          - type: number
+          - type: boolean
+          description: Value of the flag
+        metadata:
+          $ref: '#/components/schemas/FlagMetadata'
     FlagMetadata:
       type: object
       properties:
@@ -119,85 +179,6 @@ components:
           type: boolean
           description: Indicates if the variation is a reference variation
           example: false
-    CampaignRequest:
-      type: object
-      required:
-      - visitor_id
-      properties:
-        visitor_id:
-          type: string
-          description: Unique identifier for the application user or website visitor
-          example: user123
-        anonymous_id:
-          type: string
-          description: Identifier for anonymous visitors (e.g., session ID)
-          example: session_xyz
-        context:
-          type: object
-          description: JSON object of key-value pairs describing the user and device context
-          additionalProperties: true
-          example:
-            device: mobile
-            platform: ios
-            subscription_level: premium
-        visitor_consent:
-          type: boolean
-          description: Determines if visitor has consented to GDPR rules
-          default: true
-        trigger_hit:
-          type: boolean
-          description: Determines whether a CAMPAIGN hit should be automatically sent
-          default: true
-        decision_group:
-          type: string
-          nullable: true
-          description: Groups visitors to receive the same variation assignment
-          example: VIP_users
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: string
-          description: Error code
-    Flag:
-      type: object
-      properties:
-        value:
-          oneOf:
-          - type: object
-          - type: string
-          - type: number
-          - type: boolean
-          description: Value of the flag
-        metadata:
-          $ref: '#/components/schemas/FlagMetadata'
-    FlagsResponse:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/Flag'
-      description: Object with flag keys as properties
-  responses:
-    UnauthorizedError:
-      description: Authentication information is missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            message: Invalid API key
-            code: UNAUTHORIZED
-    RateLimitError:
-      description: Rate limit exceeded
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            message: Rate limit exceeded. Maximum 200 req/s with burst of 600 req/s
-            code: RATE_LIMIT_EXCEEDED
   parameters:
     EnvironmentId:
       name: environmentId
@@ -207,6 +188,25 @@ components:
       schema:
         type: string
       example: env_abc123
+  responses:
+    RateLimitError:
+      description: Rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Rate limit exceeded. Maximum 200 req/s with burst of 600 req/s
+            code: RATE_LIMIT_EXCEEDED
+    UnauthorizedError:
+      description: Authentication information is missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Invalid API key
+            code: UNAUTHORIZED
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
