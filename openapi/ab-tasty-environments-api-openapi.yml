@@ -79,6 +79,11 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    FlagsResponse:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/Flag'
+      description: Object with flag keys as properties
     Error:
       type: object
       properties:
@@ -88,57 +93,6 @@ components:
         code:
           type: string
           description: Error code
-    FlagsResponse:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/Flag'
-      description: Object with flag keys as properties
-    CampaignRequest:
-      type: object
-      required:
-      - visitor_id
-      properties:
-        visitor_id:
-          type: string
-          description: Unique identifier for the application user or website visitor
-          example: user123
-        anonymous_id:
-          type: string
-          description: Identifier for anonymous visitors (e.g., session ID)
-          example: session_xyz
-        context:
-          type: object
-          description: JSON object of key-value pairs describing the user and device context
-          additionalProperties: true
-          example:
-            device: mobile
-            platform: ios
-            subscription_level: premium
-        visitor_consent:
-          type: boolean
-          description: Determines if visitor has consented to GDPR rules
-          default: true
-        trigger_hit:
-          type: boolean
-          description: Determines whether a CAMPAIGN hit should be automatically sent
-          default: true
-        decision_group:
-          type: string
-          nullable: true
-          description: Groups visitors to receive the same variation assignment
-          example: VIP_users
-    Flag:
-      type: object
-      properties:
-        value:
-          oneOf:
-          - type: object
-          - type: string
-          - type: number
-          - type: boolean
-          description: Value of the flag
-        metadata:
-          $ref: '#/components/schemas/FlagMetadata'
     FlagMetadata:
       type: object
       properties:
@@ -179,15 +133,52 @@ components:
           type: boolean
           description: Indicates if the variation is a reference variation
           example: false
-  parameters:
-    EnvironmentId:
-      name: environmentId
-      in: path
-      required: true
-      description: Identifies your account and environment (preprod or prod)
-      schema:
-        type: string
-      example: env_abc123
+    Flag:
+      type: object
+      properties:
+        value:
+          oneOf:
+          - type: object
+          - type: string
+          - type: number
+          - type: boolean
+          description: Value of the flag
+        metadata:
+          $ref: '#/components/schemas/FlagMetadata'
+    CampaignRequest:
+      type: object
+      required:
+      - visitor_id
+      properties:
+        visitor_id:
+          type: string
+          description: Unique identifier for the application user or website visitor
+          example: user123
+        anonymous_id:
+          type: string
+          description: Identifier for anonymous visitors (e.g., session ID)
+          example: session_xyz
+        context:
+          type: object
+          description: JSON object of key-value pairs describing the user and device context
+          additionalProperties: true
+          example:
+            device: mobile
+            platform: ios
+            subscription_level: premium
+        visitor_consent:
+          type: boolean
+          description: Determines if visitor has consented to GDPR rules
+          default: true
+        trigger_hit:
+          type: boolean
+          description: Determines whether a CAMPAIGN hit should be automatically sent
+          default: true
+        decision_group:
+          type: string
+          nullable: true
+          description: Groups visitors to receive the same variation assignment
+          example: VIP_users
   responses:
     RateLimitError:
       description: Rate limit exceeded
@@ -207,6 +198,15 @@ components:
           example:
             message: Invalid API key
             code: UNAUTHORIZED
+  parameters:
+    EnvironmentId:
+      name: environmentId
+      in: path
+      required: true
+      description: Identifies your account and environment (preprod or prod)
+      schema:
+        type: string
+      example: env_abc123
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
