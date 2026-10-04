@@ -69,30 +69,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    BatchActivationRequest:
-      type: object
-      required:
-      - cid
-      - batch
-      properties:
-        cid:
-          type: string
-          description: Environment ID
-          example: env_abc
-        batch:
-          type: array
-          items:
-            $ref: '#/components/schemas/BatchActivationItem'
-          minItems: 1
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: string
-          description: Error code
     BatchActivationItem:
       type: object
       required:
@@ -117,6 +93,30 @@ components:
           description: Time delta in milliseconds for offline/latent hits (0-4 hours)
           minimum: 0
           example: 2134
+    BatchActivationRequest:
+      type: object
+      required:
+      - cid
+      - batch
+      properties:
+        cid:
+          type: string
+          description: Environment ID
+          example: env_abc
+        batch:
+          type: array
+          items:
+            $ref: '#/components/schemas/BatchActivationItem'
+          minItems: 1
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
     ActivationRequest:
       type: object
       required:

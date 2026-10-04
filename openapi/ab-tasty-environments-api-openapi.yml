@@ -79,11 +79,18 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    FlagsResponse:
+    Flag:
       type: object
-      additionalProperties:
-        $ref: '#/components/schemas/Flag'
-      description: Object with flag keys as properties
+      properties:
+        value:
+          oneOf:
+          - type: object
+          - type: string
+          - type: number
+          - type: boolean
+          description: Value of the flag
+        metadata:
+          $ref: '#/components/schemas/FlagMetadata'
     Error:
       type: object
       properties:
@@ -133,18 +140,11 @@ components:
           type: boolean
           description: Indicates if the variation is a reference variation
           example: false
-    Flag:
+    FlagsResponse:
       type: object
-      properties:
-        value:
-          oneOf:
-          - type: object
-          - type: string
-          - type: number
-          - type: boolean
-          description: Value of the flag
-        metadata:
-          $ref: '#/components/schemas/FlagMetadata'
+      additionalProperties:
+        $ref: '#/components/schemas/Flag'
+      description: Object with flag keys as properties
     CampaignRequest:
       type: object
       required:

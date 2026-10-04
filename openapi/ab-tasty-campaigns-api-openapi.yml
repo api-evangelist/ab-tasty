@@ -140,39 +140,55 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    RateLimitError:
+      description: Rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Rate limit exceeded. Maximum 200 req/s with burst of 600 req/s
+            code: RATE_LIMIT_EXCEEDED
+    UnauthorizedError:
+      description: Authentication information is missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Invalid API key
+            code: UNAUTHORIZED
+  parameters:
+    CampaignId:
+      name: campaignId
+      in: path
+      required: true
+      description: Campaign ID or slug
+      schema:
+        type: string
+      example: campaign_abc
+    EnvironmentId:
+      name: environmentId
+      in: path
+      required: true
+      description: Identifies your account and environment (preprod or prod)
+      schema:
+        type: string
+      example: env_abc123
+    Mode:
+      name: mode
+      in: query
+      required: false
+      description: Specifies the format of the response body
+      schema:
+        type: string
+        enum:
+        - normal
+        - simple
+        - full
+        default: normal
   schemas:
-    CampaignResponseNormal:
-      type: object
-      properties:
-        visitorId:
-          type: string
-          example: user123
-        campaigns:
-          type: array
-          items:
-            $ref: '#/components/schemas/Campaign'
-    SingleCampaignRequest:
-      allOf:
-      - $ref: '#/components/schemas/CampaignRequest'
-      - type: object
-        properties:
-          format_response:
-            type: boolean
-            description: If true, response will be formatted according to modification type
-            default: false
-          default_redirect_url:
-            type: string
-            description: Default URL for 302 redirect if no modification redirection is defined
-            example: https://example.com/default
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: string
-          description: Error code
     CampaignResponseFull:
       type: object
       properties:
@@ -190,21 +206,28 @@ components:
         mergedModifications:
           type: object
           additionalProperties: true
-    CampaignResponseSimple:
+    Error:
       type: object
       properties:
-        campaignsVariation:
-          type: array
-          items:
-            $ref: '#/components/schemas/CampaignVariation'
-        mergedModifications:
-          type: object
-          additionalProperties: true
-          description: All remote values merged into a single object
-          example:
-            button_color: blue
-            feature_enabled: true
-            welcome_text: Hello!
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+    SingleCampaignRequest:
+      allOf:
+      - $ref: '#/components/schemas/CampaignRequest'
+      - type: object
+        properties:
+          format_response:
+            type: boolean
+            description: If true, response will be formatted according to modification type
+            default: false
+          default_redirect_url:
+            type: string
+            description: Default URL for 302 redirect if no modification redirection is defined
+            example: https://example.com/default
     Campaign:
       type: object
       properties:
@@ -245,6 +268,21 @@ components:
                   example:
                     button_color: blue
                     feature_enabled: true
+    CampaignResponseSimple:
+      type: object
+      properties:
+        campaignsVariation:
+          type: array
+          items:
+            $ref: '#/components/schemas/CampaignVariation'
+        mergedModifications:
+          type: object
+          additionalProperties: true
+          description: All remote values merged into a single object
+          example:
+            button_color: blue
+            feature_enabled: true
+            welcome_text: Hello!
     CampaignVariation:
       type: object
       properties:
@@ -288,54 +326,16 @@ components:
           nullable: true
           description: Groups visitors to receive the same variation assignment
           example: VIP_users
-  parameters:
-    Mode:
-      name: mode
-      in: query
-      required: false
-      description: Specifies the format of the response body
-      schema:
-        type: string
-        enum:
-        - normal
-        - simple
-        - full
-        default: normal
-    CampaignId:
-      name: campaignId
-      in: path
-      required: true
-      description: Campaign ID or slug
-      schema:
-        type: string
-      example: campaign_abc
-    EnvironmentId:
-      name: environmentId
-      in: path
-      required: true
-      description: Identifies your account and environment (preprod or prod)
-      schema:
-        type: string
-      example: env_abc123
-  responses:
-    RateLimitError:
-      description: Rate limit exceeded
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            message: Rate limit exceeded. Maximum 200 req/s with burst of 600 req/s
-            code: RATE_LIMIT_EXCEEDED
-    UnauthorizedError:
-      description: Authentication information is missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            message: Invalid API key
-            code: UNAUTHORIZED
+    CampaignResponseNormal:
+      type: object
+      properties:
+        visitorId:
+          type: string
+          example: user123
+        campaigns:
+          type: array
+          items:
+            $ref: '#/components/schemas/Campaign'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
