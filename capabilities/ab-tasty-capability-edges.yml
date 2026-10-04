@@ -1,0 +1,47 @@
+slug: ab-tasty
+provider: AB Tasty
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Activate
+  spec_file: ab-tasty-activate-api-openapi.yml
+  capability_id: BC-4280.50
+  capability_id_l1: BC-4280
+  capability_name: A/B Test Execution
+  confidence: 0.8
+  evidence: '"evaluates a visitors context against your active experiments, personalizations, and feature
+    flags, then returns a deterministic decision which campaigns the user qualifies for, the selected
+    variation"; POST /activate with BatchActivationRequest'
+  reason: The activate endpoint reports/confirms a visitor's exposure to a selected experiment variation
+    — runtime A/B test execution on an experimentation platform.
+- tag: Campaigns
+  spec_file: ab-tasty-campaigns-api-openapi.yml
+  capability_id: BC-4280.50
+  capability_id_l1: BC-4280
+  capability_name: A/B Test Execution
+  confidence: 0.75
+  evidence: 'POST /{environmentId}/campaigns; schemas "Campaign", "CampaignVariation"; description: "which
+    campaigns the user qualifies for, the selected variation"'
+  reason: '''Campaigns'' here are experiment/personalisation campaigns whose variations are assigned at
+    runtime, i.e. A/B and personalisation test execution — not marketing campaign management per se, though
+    some personalisation ambiguity remains.'
+- tag: Environments
+  spec_file: ab-tasty-environments-api-openapi.yml
+  capability_id: BC-4210.50
+  capability_id_l1: BC-4210
+  capability_name: Feature Flag Management
+  confidence: 0.75
+  evidence: POST /{environmentId}/flags; schemas "FlagsResponse", "FlagMetadata", "Flag"; description
+    mentions "feature flags ... returns a deterministic decision"
+  reason: Despite the tag name, the single operation resolves feature flags for a visitor — runtime feature
+    flag evaluation and targeting, i.e. Feature Flag Management.
