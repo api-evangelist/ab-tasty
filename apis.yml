@@ -299,6 +299,12 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/ab-tasty.png
 access: 3rd-Party
 common:
+  - type: Plans
+    url: plans/ab-tasty-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/ab-tasty-rate-limits.yml
+  - type: FinOps
+    url: finops/ab-tasty-finops.yml
   - type: CapabilityMap
     url: capabilities/ab-tasty-capability-edges.yml
     name: AB Tasty Business Capability Map
