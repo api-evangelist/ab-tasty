@@ -1,4 +1,4 @@
-# AB Tasty (ab-tasty)
+# AB Tasty
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,131 +66,205 @@
 
 At AB Tasty, we are your partner for pushing great ideas even further through optimization. We achieve this by empowering brands to build better experiences using personalization, experimentation, recommendations, merchandising, and the market's only emotions-based segmentation solution.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/apis.yml)
+**Areas:** Aggregation · Experimentation · Feature Flags · Personalization · A/B Testing
 
-## Scope
+## AB Tasty on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for AB Tasty is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/ab-tasty/](https://apis.io/providers/ab-tasty/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Aggregation
-- Experimentation
-- Feature Flags
-- Personalization
-- A/B Testing
+- [AB Tasty Remote Control API](https://apis.io/apis/ab-tasty/ab-tasty-remote-control-api/) — AB Tastys Remote Control API is a developer and QA tool that lets you programmatically drive the AB Tasty SDK from outside your app or page, so you can…
+- [AB Tasty Public API](https://apis.io/apis/ab-tasty/ab-tasty-public-api/) — The AB Tasty Public API provides programmatic access to manage campaigns, monitor and control experiments, manage account users, and integrate AB Tasty with…
+- [AB Tasty Activate API](https://apis.io/apis/ab-tasty/ab-tasty-activate-api/) — The Activate API from AB Tasty — 1 operation(s) for activate.
+- [AB Tasty Campaigns API](https://apis.io/apis/ab-tasty/ab-tasty-campaigns-api/) — Campaign assignment operations
+- [AB Tasty Environments API](https://apis.io/apis/ab-tasty/ab-tasty-environments-api/) — The Environments API from AB Tasty — 3 operation(s) for environments.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-06-05
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### AB Tasty Decision API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The AB Tasty Decision API is a server-side service that evaluates a visitors context against your active experiments, personalizations, and feature flags, then returns a deterministic decision: which campaigns the user qualifies for, the selected variation, and any variables or content to render.
+- [Ab Tasty Agentic Access](https://apis.io/agentic-access/ab-tasty/ab-tasty-agentic-access/)
 
-- **Human URL:** [https://docs.abtasty.com/server-side/decision-api/decision-api](https://docs.abtasty.com/server-side/decision-api/decision-api)
+#### JSON Schema (13)
 
-#### Tags
+The data models the API reads and writes.
 
-- Decision
-- Experimentation
-- Feature Flags
-- Server Side
+- [ActivationRequest](https://apis.io/schemas/ab-tasty/decision-api-activation-request/)
+- [BatchActivationItem](https://apis.io/schemas/ab-tasty/decision-api-batch-activation-item/)
+- [BatchActivationRequest](https://apis.io/schemas/ab-tasty/decision-api-batch-activation-request/)
+- [Campaign](https://apis.io/schemas/ab-tasty/decision-api-campaign/)
+- [CampaignRequest](https://apis.io/schemas/ab-tasty/decision-api-campaign-request/)
+- [CampaignResponseFull](https://apis.io/schemas/ab-tasty/decision-api-campaign-response-full/)
+- [CampaignResponseNormal](https://apis.io/schemas/ab-tasty/decision-api-campaign-response-normal/)
+- [CampaignResponseSimple](https://apis.io/schemas/ab-tasty/decision-api-campaign-response-simple/)
+- [CampaignVariation](https://apis.io/schemas/ab-tasty/decision-api-campaign-variation/)
+- [Flag](https://apis.io/schemas/ab-tasty/decision-api-flag/)
+- [FlagMetadata](https://apis.io/schemas/ab-tasty/decision-api-flag-metadata/)
+- [FlagsResponse](https://apis.io/schemas/ab-tasty/decision-api-flags-response/)
+- [SingleCampaignRequest](https://apis.io/schemas/ab-tasty/decision-api-single-campaign-request/)
 
-#### Properties
+#### JSON Structure (13)
 
-- [Documentation](https://docs.abtasty.com/server-side/decision-api/decision-api)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/openapi/decision-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flag-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flags-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-activation-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-flag-metadata-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-normal-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-simple-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-response-full-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-batch-activation-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-batch-activation-item-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-campaign-variation-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-schema/decision-api-single-campaign-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [SDK](https://github.com/flagship-io/flagship-ts-sdk)
-- [SDK](https://github.com/flagship-io/flagship-react-sdk)
-- [SDK](https://github.com/flagship-io/flagship-react-native-sdk)
-- [SDK](https://github.com/flagship-io/flagship-flutter-sdk)
-- [SDK](https://github.com/flagship-io/flagship-php-sdk)
-- [SDK](https://github.com/flagship-io/flagship-dotnet-sdk)
-- [SDK](https://github.com/flagship-io/flagship-android)
-- [SDK](https://github.com/flagship-io/flagship-ios)
-- [SDK](https://github.com/flagship-io/flagship-python-sdk)
-- [SDK](https://github.com/flagship-io/flagship-java)
-- [SDK](https://github.com/flagship-io/flagship-go-sdk)
-- [Code Examples](https://github.com/flagship-io/code-samples)
-- [Postman Collection](collections/decision-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/decision-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-### AB Tasty Remote Control API
+- [Decision Api Activation Request Structure](https://apis.io/json-structure/ab-tasty/decision-api-activation-request-structure/)
+- [Decision Api Batch Activation Item Structure](https://apis.io/json-structure/ab-tasty/decision-api-batch-activation-item-structure/)
+- [Decision Api Batch Activation Request Structure](https://apis.io/json-structure/ab-tasty/decision-api-batch-activation-request-structure/)
+- [Decision Api Campaign Request Structure](https://apis.io/json-structure/ab-tasty/decision-api-campaign-request-structure/)
+- [Decision Api Campaign Response Full Structure](https://apis.io/json-structure/ab-tasty/decision-api-campaign-response-full-structure/)
+- [Decision Api Campaign Response Normal Structure](https://apis.io/json-structure/ab-tasty/decision-api-campaign-response-normal-structure/)
+- [Decision Api Campaign Response Simple Structure](https://apis.io/json-structure/ab-tasty/decision-api-campaign-response-simple-structure/)
+- [Decision Api Campaign Structure](https://apis.io/json-structure/ab-tasty/decision-api-campaign-structure/)
+- [Decision Api Campaign Variation Structure](https://apis.io/json-structure/ab-tasty/decision-api-campaign-variation-structure/)
+- [Decision Api Flag Metadata Structure](https://apis.io/json-structure/ab-tasty/decision-api-flag-metadata-structure/)
+- [Decision Api Flag Structure](https://apis.io/json-structure/ab-tasty/decision-api-flag-structure/)
+- [Decision Api Flags Response Structure](https://apis.io/json-structure/ab-tasty/decision-api-flags-response-structure/)
+- [Decision Api Single Campaign Request Structure](https://apis.io/json-structure/ab-tasty/decision-api-single-campaign-request-structure/)
 
-AB Tastys Remote Control API is a developer and QA tool that lets you programmatically drive the AB Tasty SDK from outside your app or page, so you can precisely control and observe experiments without changing production targeting. With it, you can preview or force specific campaigns and variations for a visitor, toggle or pause experiences, set visitor/context attributes, trigger goals and custom events, refresh decisions, and clear caches to reproduce clean states.
+#### JSON-LD (1)
 
-- **Human URL:** [https://docs.abtasty.com/server-side/remote-control-api](https://docs.abtasty.com/server-side/remote-control-api)
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Ab Tasty Decision Api Context](https://apis.io/jsonld/ab-tasty/ab-tasty-decision-api-context/)
 
-- Remote Control
-- Campaigns
-- Experimentation
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Documentation](https://docs.abtasty.com/server-side/remote-control-api)
-- [Postman Collection](collections/decision-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/decision-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Ab Tasty Vocabulary](https://apis.io/vocabularies/ab-tasty/ab-tasty-vocabulary/)
 
-### AB Tasty Public API
+#### Examples (13)
 
-The AB Tasty Public API provides programmatic access to manage campaigns, monitor and control experiments, manage account users, and integrate AB Tasty with third-party tools. It uses OAuth-style credentials (ClientID and ClientSecret) to generate access tokens for authentication.
+Example requests and responses.
 
-- **Human URL:** [https://docs.abtasty.com/integrations/custom-integrations/ab-tasty-public-api](https://docs.abtasty.com/integrations/custom-integrations/ab-tasty-public-api)
+- [Decision Api Activation Request Example](https://apis.io/examples/ab-tasty/decision-api-activation-request-example/)
+- [Decision Api Batch Activation Item Example](https://apis.io/examples/ab-tasty/decision-api-batch-activation-item-example/)
+- [Decision Api Batch Activation Request Example](https://apis.io/examples/ab-tasty/decision-api-batch-activation-request-example/)
+- [Decision Api Campaign Example](https://apis.io/examples/ab-tasty/decision-api-campaign-example/)
+- [Decision Api Campaign Request Example](https://apis.io/examples/ab-tasty/decision-api-campaign-request-example/)
+- [Decision Api Campaign Response Full Example](https://apis.io/examples/ab-tasty/decision-api-campaign-response-full-example/)
+- [Decision Api Campaign Response Normal Example](https://apis.io/examples/ab-tasty/decision-api-campaign-response-normal-example/)
+- [Decision Api Campaign Response Simple Example](https://apis.io/examples/ab-tasty/decision-api-campaign-response-simple-example/)
+- [Decision Api Campaign Variation Example](https://apis.io/examples/ab-tasty/decision-api-campaign-variation-example/)
+- [Decision Api Flag Example](https://apis.io/examples/ab-tasty/decision-api-flag-example/)
+- [Decision Api Flag Metadata Example](https://apis.io/examples/ab-tasty/decision-api-flag-metadata-example/)
+- [Decision Api Flags Response Example](https://apis.io/examples/ab-tasty/decision-api-flags-response-example/)
+- [Decision Api Single Campaign Request Example](https://apis.io/examples/ab-tasty/decision-api-single-campaign-request-example/)
 
-#### Tags
+#### Collections (11)
 
-- Campaigns
-- Integrations
-- Management
+Postman and Open Collection request collections.
 
-#### Properties
+- [AB Tasty Decision Activate API](https://apis.io/collections/ab-tasty/open-ab-tasty-activate-api/)
+- [AB Tasty Decision Activate Campaigns API](https://apis.io/collections/ab-tasty/open-ab-tasty-campaigns-api/)
+- [AB Tasty Decision Activate Environments API](https://apis.io/collections/ab-tasty/open-ab-tasty-environments-api/)
+- [AB Tasty Decision Activate Flags API](https://apis.io/collections/ab-tasty/open-ab-tasty-flags-api/)
+- [AB Tasty Decision Activate Post API](https://apis.io/collections/ab-tasty/open-ab-tasty-post-api/)
+- [AB Tasty Decision API](https://apis.io/collections/ab-tasty/open-decision-api/)
+- [AB Tasty Decision Activate API](https://apis.io/collections/ab-tasty/postman-ab-tasty-activate-api/)
+- [AB Tasty Decision Activate Campaigns API](https://apis.io/collections/ab-tasty/postman-ab-tasty-campaigns-api/)
+- [AB Tasty Decision Activate Environments API](https://apis.io/collections/ab-tasty/postman-ab-tasty-environments-api/)
+- [AB Tasty Decision Activate Flags API](https://apis.io/collections/ab-tasty/postman-ab-tasty-flags-api/)
+- [AB Tasty Decision Activate Post API](https://apis.io/collections/ab-tasty/postman-ab-tasty-post-api/)
 
-- [Documentation](https://docs.abtasty.com/integrations/custom-integrations/ab-tasty-public-api)
-- [Postman Collection](collections/decision-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/decision-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Governance rules (2)
 
-## Common Properties
+Spectral rulesets for the provider's contracts.
 
-- [LinkedIn](https://www.linkedin.com/company/ab-tasty)
+- [AB Tasty — jsonschema rules](https://apis.io/rules/ab-tasty/ab-tasty-jsonschema-spectral-rules/)
+- [AB Tasty API Rules](https://apis.io/rules/ab-tasty/ab-tasty-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Ab Tasty Authentication](https://apis.io/security/ab-tasty/ab-tasty-authentication/)
+- [Ab Tasty Domain Security](https://apis.io/security/ab-tasty/ab-tasty-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Ab Tasty Plans Pricing](https://apis.io/plans/ab-tasty/ab-tasty-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Ab Tasty Rate Limits](https://apis.io/rate-limits/ab-tasty/ab-tasty-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Ab Tasty Finops](https://apis.io/finops/ab-tasty/ab-tasty-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.abtasty.com/)
-- [Portal](https://developers.abtasty.com/)
 - [Documentation](https://docs.abtasty.com/)
 - [Pricing](https://www.abtasty.com/pricing/)
 - [Support](https://support.abtasty.com/hc/en-us)
-- [Legal](https://www.abtasty.com/legal-notices/)
-- [Privacy Policy](https://www.abtasty.com/privacy-policy/)
-- [GitHub Organization](https://github.com/flagship-io)
-- [C L I](https://github.com/flagship-io/abtasty-cli)
-- [Tools](https://github.com/flagship-io/mcp-server)
-- [Spectral Rules](https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/rules/ab-tasty-spectral-rules.yml)
-- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/vocabulary/ab-tasty-vocabulary.yaml)
-- [JSON-LD](https://raw.githubusercontent.com/api-evangelist/ab-tasty/refs/heads/main/json-ld/ab-tasty-decision-api-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [L L Ms Txt](https://docs.abtasty.com/llms.txt)
+- [Blog](https://www.abtasty.com/feed/)
+- [Privacy policy](https://www.abtasty.com/privacy-policy/)
+- [GitHub](https://github.com/flagship-io)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 47.4** — developing · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 71.4 |
+| Contract governance | 27.3 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 63.1 |
+| Access clarity | 28.9 |
+
+**Agent readiness 22.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 20.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/ab-tasty/](https://apis.io/providers/ab-tasty/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for AB Tasty: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/ab-tasty/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
