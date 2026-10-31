@@ -210,7 +210,7 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 - [Website](https://www.abtasty.com/)
 - [Documentation](https://docs.abtasty.com/)
-- [Pricing](https://www.abtasty.com/pricing/)
+- [Pricing](https://wingify.com/pricing/)
 - [Support](https://support.abtasty.com/hc/en-us)
 - [Blog](https://www.abtasty.com/feed/)
 - [Privacy policy](https://www.abtasty.com/privacy-policy/)
@@ -218,7 +218,7 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 ## API Evangelist rating
 
-**Kin Score 47.4** — developing · rubric 0.24.0 · scored 2026-10-17
+**Kin Score 47.4** — developing · rubric 0.25.0 · scored 2026-10-23
 
 | Facet | Score |
 |---|---|
@@ -229,7 +229,7 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Developer ergonomics | 63.1 |
 | Access clarity | 28.9 |
 
-**Agent readiness 22.9** — agent-aware
+**Agent readiness 22.4** — agent-aware
 
 | Agent-readiness dimension | Result |
 |---|---|
@@ -252,6 +252,8 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Protected Resource Metadata | — |
 | Dynamic Client Registration | — |
 | Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | — |
 
 **Regulatory alignment 20.6** — Horizontal (data, software, accessibility, platform)
 
