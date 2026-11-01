@@ -1,0 +1,66 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://wingify.com/pricing/
+sources:
+- https://wingify.com/pricing/
+- https://www.abtasty.com/pricing/
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T162152
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: negotiated
+delivery:
+  delivery: managed+licensed
+  method: page
+  read: '2026-10-28'
+  evidence: Self Hosting
+  managed_tier: Growth
+published: false
+note: No numeric prices; page states 'No fixed plans. Just a custom proposal built around your goals and
+  scope.' Wingz Core free with all products, Wingz Advanced is a paid upgrade (price not shown). Enterprise
+  plan lists Self Hosting as a paid feature.
+plan_count: 3
+plans:
+- name: Growth
+  price_text: Schedule a Demo
+  period: none
+  included_quota: Visual (WYSIWYG) & Code Editor; Unlimited Experiments, Variations & Metrics; Basic Targeting,
+    Triggers & Reporting; Wingz AI Core Plan; Basic Support
+- name: Pro
+  price_text: Schedule a Demo
+  period: none
+  included_quota: Everything in Growth plan, plus Advanced Targeting, Triggers & Reporting, Multi Variate
+    Testing, Advanced Support
+- name: Enterprise
+  price_text: Schedule a Demo
+  period: none
+  included_quota: Everything in Pro plan, plus Self Hosting, SSO, API Access, 24x7 Support
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Growth
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Pro
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
