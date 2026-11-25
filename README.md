@@ -88,7 +88,7 @@ Each property below is a page on APIs.io carrying the machine-readable artifact 
 
 Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Ab Tasty Agentic Access](https://apis.io/agentic-access/ab-tasty/ab-tasty-agentic-access/)
+- [AB Tasty Agentic Access](https://apis.io/agentic-access/ab-tasty/ab-tasty-agentic-access/)
 
 #### JSON Schema (13)
 
@@ -183,26 +183,26 @@ Spectral rulesets for the provider's contracts.
 
 Authentication, trust centre, and vulnerability disclosure.
 
-- [Ab Tasty Authentication](https://apis.io/security/ab-tasty/ab-tasty-authentication/)
-- [Ab Tasty Domain Security](https://apis.io/security/ab-tasty/ab-tasty-domain-security/)
+- [AB Tasty Authentication](https://apis.io/security/ab-tasty/ab-tasty-authentication/)
+- [AB Tasty Domain Security](https://apis.io/security/ab-tasty/ab-tasty-domain-security/)
 
 #### Plans and pricing (1)
 
 Published plans, tiers and prices.
 
-- [Ab Tasty Plans Pricing](https://apis.io/plans/ab-tasty/ab-tasty-plans-pricing/)
+- [AB Tasty Plans Pricing](https://apis.io/plans/ab-tasty/ab-tasty-plans-pricing/)
 
 #### Rate limits (1)
 
 Published request limits.
 
-- [Ab Tasty Rate Limits](https://apis.io/rate-limits/ab-tasty/ab-tasty-rate-limits/)
+- [AB Tasty Rate Limits](https://apis.io/rate-limits/ab-tasty/ab-tasty-rate-limits/)
 
 #### FinOps (1)
 
 What the API costs to run, by operation.
 
-- [Ab Tasty Finops](https://apis.io/finops/ab-tasty/ab-tasty-finops/)
+- [AB Tasty Finops](https://apis.io/finops/ab-tasty/ab-tasty-finops/)
 
 ## Where to find this API
 
@@ -218,18 +218,18 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 ## API Evangelist rating
 
-**Kin Score 47.4** — developing · rubric 0.25.0 · scored 2026-10-23
+**Kin Score 39.2** — thin · rubric 0.28.1 · scored 2026-11-21
 
 | Facet | Score |
 |---|---|
 | Discoverability | 64.3 |
-| Contract quality | 71.4 |
+| Contract quality | 31.6 |
 | Contract governance | 27.3 |
-| Operational transparency | 10.5 |
+| Operational transparency | 9.5 |
 | Developer ergonomics | 63.1 |
-| Access clarity | 28.9 |
+| Access clarity | 42.6 |
 
-**Agent readiness 22.4** — agent-aware
+**Agent readiness 27.5** — agent-aware
 
 | Agent-readiness dimension | Result |
 |---|---|
@@ -239,7 +239,7 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | MCP Server | — |
 | Auth Clarity | bearer (partial credit) |
 | Idempotency | — |
-| Error Semantics | — |
+| Error Semantics | verified |
 | OpenAPI Examples | verified |
 | Rate Limit Signal | derived (partial credit) |
 | Event Surface Described | — |
@@ -254,8 +254,12 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Agentic Commerce | — |
 | Pagination Ratio | na |
 | Operation Distinctiveness | — |
+| MCP Tool Quality | na |
+| Onboarding Descriptor | — |
+| Dns Aid Index | na |
+| Markdown Negotiation | na |
 
-**Regulatory alignment 20.6** — Horizontal (data, software, accessibility, platform)
+**Regulatory alignment 14.7** — Horizontal (data, software, accessibility, platform)
 
 The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/ab-tasty/](https://apis.io/providers/ab-tasty/).
 
